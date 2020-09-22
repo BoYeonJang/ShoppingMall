@@ -22,11 +22,11 @@ public class DBUtil {
 		Class.forName(DRIVER_NAME);
 		Connection conn = DriverManager.getConnection(url, user, password);
 
-		if (conn != null) {
-			System.out.println("잘 작동됨");
-		} else {
-			System.out.println("잘 작동 못함");
-		}
+//		if (conn != null) {
+//			System.out.println("잘 작동됨");
+//		} else {
+//			System.out.println("잘 작동 못함");
+//		}
 
 		return conn;
 	}
@@ -64,15 +64,15 @@ public class DBUtil {
 		close(conn, ps);
 	}
 
-	public static void main(String[] args) {
-
-		Connection conn = null;
-		try {
-			conn = DBUtil.getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		System.out.println(conn);
-	}
+//	public static void main(String[] args) {
+//
+//		Connection conn = null;
+//		try {
+//			conn = DBUtil.getConnection();
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		System.out.println(conn);
+//	}
 
 }
