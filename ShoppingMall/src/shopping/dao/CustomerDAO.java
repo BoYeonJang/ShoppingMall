@@ -28,7 +28,7 @@ public class CustomerDAO {
 			ps.setString(7, customer.getEmail());
 
 			System.out.println(customer.getName());
-			
+
 			int count = ps.executeUpdate();
 			if (count == 1)
 				resultFlag = true;
@@ -39,31 +39,38 @@ public class CustomerDAO {
 		}
 		return resultFlag;
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		CustomerVO customer = new CustomerVO();
 		customer.setId("boyeon55s");
 		customer.setName("장보연");
 	}
 
 	// 로그인
-	public CustomerVO loginCustomer(String id) {
+	// 아이디와 비밀번호를 체크
+	public CustomerVO loginCustomer(String id, String password) {
 		CustomerVO customer = null;
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
+
+		String dbpw = ""; // DB에서 비밀번호를 꺼내 변수에 담는다
+		int i = -1;
+
 		try {
 			conn = DBUtil.getConnection();
-			ps = conn.prepareStatement("select * from Customer where id=?");
+			ps = conn.prepareStatement("select password from Customer where id=?");
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				customer = new CustomerVO();
-				customer.setId(rs.getString("id"));
-				customer.setEmail(rs.getString("email"));
-				customer.setName(rs.getString("name"));
-				customer.setPassword(rs.getString("password"));
+				dbpw = rs.getString("password");
+				if (dbpw.equals(password))
+					i = 1; // DB의 비밀번호와 입력받은 비밀번호가 같을 경우
+				else
+					i = 0; // DB의 비밀번호와 입력받은 비밀번호가 다를 경우
+			} else {
+				i = -1; // 가입된 아이디가 아닐 경우
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

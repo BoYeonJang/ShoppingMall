@@ -17,7 +17,7 @@ public class CustomerInputServlet extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		request.setCharacterEncoding("utf-8");
 		CustomerDAO customerdao = new CustomerDAO();
 		CustomerVO customer = new CustomerVO();
