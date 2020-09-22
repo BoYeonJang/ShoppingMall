@@ -3,6 +3,8 @@ package shopping.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 import shopping.util.DBUtil;
 import shopping.vo.CustomerVO;
@@ -14,7 +16,7 @@ public class CustomerDAO {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		boolean resultFlag = false;
-		String sql = "insert into Customer values (?,?,?,?,?,?,?)";
+		String sql = "insert into customer values (?,?,?,?,?,?,?)";
 		try {
 			conn = DBUtil.getConnection();
 
@@ -48,29 +50,25 @@ public class CustomerDAO {
 	}
 
 	// 로그인
-	// 아이디와 비밀번호를 체크
-	public CustomerVO loginCustomer(String id, String password) {
+	public CustomerVO getCustomerLogin(String id) {
 		CustomerVO customer = null;
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-
-		String dbpw = ""; // DB에서 비밀번호를 꺼내 변수에 담는다
-		int i = -1;
-
 		try {
 			conn = DBUtil.getConnection();
-			ps = conn.prepareStatement("select password from Customer where id=?");
+			ps = conn.prepareStatement("select * from customer where id=?");
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				dbpw = rs.getString("password");
-				if (dbpw.equals(password))
-					i = 1; // DB의 비밀번호와 입력받은 비밀번호가 같을 경우
-				else
-					i = 0; // DB의 비밀번호와 입력받은 비밀번호가 다를 경우
-			} else {
-				i = -1; // 가입된 아이디가 아닐 경우
+				customer = new CustomerVO();
+				customer.setId(rs.getString("id"));
+				customer.setPassword(rs.getString("password"));
+				customer.setName(rs.getString("name"));
+				customer.setGender(rs.getString("gender"));
+				customer.setTel(rs.getString("tel"));
+				customer.setAddress(rs.getString("address"));
+				customer.setEmail(rs.getString("email"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -81,12 +79,75 @@ public class CustomerDAO {
 		return customer;
 	}
 
+	// 전체 조회
+	public List<CustomerVO> getCustomerList() {
+		List<CustomerVO> customerList = new ArrayList<CustomerVO>();
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			conn = DBUtil.getConnection();
+
+			ps = conn.prepareStatement("select id, password, name, gender, tel, address, email from customer");
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				CustomerVO customer = new CustomerVO();
+				customer.setId(rs.getString(1));
+				customer.setPassword(rs.getString(2));
+				customer.setName(rs.getString(3));
+				customer.setGender(rs.getString(4));
+				customer.setTel(rs.getString(5));
+				customer.setAddress(rs.getString(6));
+				customer.setEmail(rs.getString(7));
+
+				customerList.add(customer);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(conn, ps, rs);
+		}
+		return customerList;
+	}
+	
+	// 한 건만 조회 
+	public CustomerVO getCustomer(String id) {
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		CustomerVO customer=null;
+		try {
+			conn = DBUtil.getConnection();
+
+			ps = conn.prepareStatement("select id, password, name, gender, tel, address, email from customer where id=?");
+			ps.setNString(1, id);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				customer = new CustomerVO();
+				customer.setId(rs.getString(1));
+				customer.setPassword(rs.getString(2));
+				customer.setName(rs.getString(3));
+				customer.setGender(rs.getString(4));
+				customer.setTel(rs.getString(5));
+				customer.setAddress(rs.getString(6));
+				customer.setEmail(rs.getString(7));
+
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(conn, ps, rs);
+		}
+		return customer;
+	}
+	
+	
 	// 수정
 	public boolean updateCustomer(CustomerVO customer) {
 		boolean resultFlag = false;
 		Connection conn = null;
 		PreparedStatement ps = null;
-		String sql = "update Customer set password=?, name=?, gender=?, tel=?, address=?, email=? where id=?";
+		String sql = "update customer set password=?, name=?, gender=?, tel=?, address=?, email=? where id=?";
 
 		try {
 			conn = DBUtil.getConnection();
@@ -118,7 +179,7 @@ public class CustomerDAO {
 		boolean resultFlag = false;
 		Connection conn = null;
 		PreparedStatement ps = null;
-		String sql = "delete from Customer where id=?";
+		String sql = "delete from customer where id=?";
 
 		try {
 			conn = DBUtil.getConnection();

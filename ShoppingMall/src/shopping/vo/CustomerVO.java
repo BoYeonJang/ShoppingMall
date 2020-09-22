@@ -66,4 +66,12 @@ public class CustomerVO {
 		this.email = email;
 	}
 
+	@Override
+	public String toString() {
+		return "CustomerVO [id=" + id + ", password=" + password + ", name=" + name + ", gender=" + gender + ", tel="
+				+ tel + ", address=" + address + ", email=" + email + "]";
+	}
+	
+	
+
 }
