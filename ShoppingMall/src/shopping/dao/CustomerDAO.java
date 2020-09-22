@@ -14,7 +14,7 @@ public class CustomerDAO {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		boolean resultFlag = false;
-		String sql = "insert into Customer (id, password, name, gender, tel, address, email) values (?,?,?,?,?,?,?)";
+		String sql = "insert into Customer values (?,?,?,?,?,?,?)";
 		try {
 			conn = DBUtil.getConnection();
 
@@ -27,6 +27,8 @@ public class CustomerDAO {
 			ps.setString(6, customer.getAddress());
 			ps.setString(7, customer.getEmail());
 
+			System.out.println(customer.getName());
+			
 			int count = ps.executeUpdate();
 			if (count == 1)
 				resultFlag = true;
@@ -36,6 +38,13 @@ public class CustomerDAO {
 			DBUtil.close(conn, ps);
 		}
 		return resultFlag;
+	}
+	
+	public static void main(String[] args) {
+		
+		CustomerVO customer = new CustomerVO();
+		customer.setId("boyeon55s");
+		customer.setName("장보연");
 	}
 
 	// 로그인
@@ -121,4 +130,5 @@ public class CustomerDAO {
 		}
 		return resultFlag;
 	}
+
 }
