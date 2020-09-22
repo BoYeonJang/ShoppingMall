@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import ShoppingMall.Util.DBUtil;
-import ShoppingMall.VO.NoticeBoardVO; 
-import ShoppingMall.VO.ProductVO;
+import shopping.util.DBUtil;
+import shopping.vo.NoticeBoardVO;
+import shopping.vo.ProductVO;
 
 public class NoticeBoardDAO {
 	

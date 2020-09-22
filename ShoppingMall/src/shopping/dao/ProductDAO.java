@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import ShoppingMall.Util.DBUtil;
-import ShoppingMall.VO.ProductVO;
+import shopping.util.DBUtil;
+import shopping.vo.ProductVO;
 
 
 public class ProductDAO {
