@@ -20,3 +20,5 @@
 ###### 9/23: 각자 맡은 web 끝내기
 ###### 9/24: 3개 연결, 오류 수정, CSS
 ###### 9/25: CSS
+
+https://www.notion.so/ShoppingMall-6d760bfaf6ad47dea941778a34a47435
