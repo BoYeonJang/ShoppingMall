@@ -42,8 +42,8 @@ public class ProductVO {
 	}
 	@Override
 	public String toString() {
-		return "ProductVO [productName=" + productName + ", productId=" + productId + ", productPrice=" + productPrice
-				+ ", productSize=" + productSize + ", productType=" + productType + "]\n";
+		return "product id: " + getProductId() + " product price: " + getProductPrice()
+		+ " price size: " + getProductSize() + " price type: " + getProductType();
 	}
 	
 	

@@ -122,6 +122,38 @@ public class ProductDAO {
 
 		return product;
 	}
+	
+//	public ProductVO getProductWithType(String productType) {
+//		ProductVO product = null;
+//		Connection conn = null;
+//		PreparedStatement ps = null;
+//		ResultSet rs = null;
+//		String sql = "";
+//		try {
+//			conn = DBUtil.getConnection();
+//			sql = "select * from product where productType=?";
+//			ps = conn.prepareStatement(sql);
+//			ps.setString(1, productType);
+//			
+//			rs = ps.executeQuery();
+//			
+//			while (rs.next()) {
+//				product = new ProductVO();
+//				product.setProductName(rs.getString(1));
+//				product.setProductId(rs.getString(2));
+//				product.setProductPrice(rs.getInt(3));
+//				product.setProductSize(rs.getString(4));
+//				product.setProductType(rs.getString(5));
+//			}
+//
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		} finally {
+//			DBUtil.close(conn, ps, rs);
+//		}
+//
+//		return product;
+//	}
 
 	
 	public List<ProductVO> getProductList() {
@@ -155,6 +187,38 @@ public class ProductDAO {
 		return productList;
 	}
 	
+	public List<ProductVO> getProductListWithType(String productType) {
+		List<ProductVO> productList = new ArrayList<ProductVO>();
+		Connection conn = null;
+		String sql ="";
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			conn = DBUtil.getConnection();
+			sql= "select * from product where productType=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, productType);
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				ProductVO product = new ProductVO();
+				product.setProductName(rs.getString(1));
+				product.setProductId(rs.getString(2));
+				product.setProductPrice(rs.getInt(3));
+				product.setProductSize(rs.getString(4));
+				product.setProductType(rs.getString(5));
+
+				productList.add(product);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(conn, ps, rs);
+		}
+
+		return productList;
+	}
+	
 	public static void main(String[] args) {
 //		ProductVO product = new ProductVO();
 //		product.setProductId("126");
@@ -167,6 +231,7 @@ public class ProductDAO {
 		//dao.addProduct(product);
 		//dao.deleteProduct("111");
 		System.out.println(dao.getProductList());
+		//System.out.println(dao.getProductListWithType("상의"));
 		
 	}
 }

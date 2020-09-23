@@ -9,6 +9,8 @@ public class NoticeBoardVO {
 	// 내용
 	private String noticeCont;
 	
+	private String noticeCategory;
+	
 	
 	
 	public int getNoticeNo() {
@@ -30,11 +32,20 @@ public class NoticeBoardVO {
 		this.noticeCont = noticeCont;
 	}
 	
+	public String getNoticeCategory() {
+		return noticeCategory;
+	}
+	public void setNoticeCategory(String noticeCategory) {
+		this.noticeCategory = noticeCategory;
+	}
+	
 	@Override
 	public String toString() {
-		return "NoticeBoard [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeCont=" + noticeCont
-				+ "]";
+		return "NoticeBoardVO [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeCont=" + noticeCont
+				+ ", noticeCategory=" + noticeCategory + "]";
 	}
+	
+	
 	
 	
 	

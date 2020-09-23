@@ -1,5 +1,4 @@
 <%@page import="shopping.vo.NoticeBoardVO"%>
-<%@page import="shopping.vo.ProductVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -7,11 +6,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>ProductList</title>
+<title>Insert title here</title>
 </head>
 <body>
 
-	<% List<NoticeBoardVO> noticeBoardList = (List<NoticeBoardVO>)request.getAttribute("noticeBoardList"); %>
+
+	<% List<NoticeBoardVO> noticeBoardBottomList = (List<NoticeBoardVO>)request.getAttribute("noticeBoardBottomList"); %>
 	<table>
 		<thead>
 			<tr>
@@ -20,7 +20,7 @@
 				<td>Content</td>
 			</tr>
 		</thead>
-		<% for(NoticeBoardVO notice : noticeBoardList) {%>
+		<% for(NoticeBoardVO notice : noticeBoardBottomList) {%>
 		<tbody>
 			<tr>
 				<td><%= notice.getNoticeNo()%></td>
