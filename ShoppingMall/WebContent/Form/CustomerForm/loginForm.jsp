@@ -12,6 +12,8 @@
 		<label>아이디: </label> <input type="text" name="id"><br>
 		<label>비밀번호: </label> <input type="text" name="password"><br>
 		<input type="submit" value="로그인">
+	</form>
+	<form action="inputForm.html" method="post">
 		<input type="submit" value="가입하러 가기">
 	</form>
 </body>

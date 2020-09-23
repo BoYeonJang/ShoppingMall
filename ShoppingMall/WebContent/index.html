@@ -2,7 +2,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이정장의 쇼핑몰</title>
+<title>노팅힐</title>
+<link rel="stylesheet" href="/ShoppingMall/css/header.css">
 <style>
 ul {
 	background-color: #FFDAB9;
@@ -36,11 +37,11 @@ li a:hover:not(.current) {
 	color: white;
 }
 
+/* 상단으로 가는 버튼 */
 .img_size {
-	width: auto;
+	width: 10%;
 	height: auto;
-	max-width: 50px;
-	max-height: 50px;
+	float: right;
 }
 
 div {
@@ -51,7 +52,10 @@ div {
 </style>
 </head>
 <body>
-	<h1>이정장의 쇼핑몰 메인 화면 입니다</h1>
+	<hr>
+	<a href=index.html> <img class="main_image"
+		src="images/main_image.png" alt="노팅힐"></a>
+	<hr>
 	<ul>
 		<li><a href="NoticeBoardAllListServlet">전체 상품 목록</a></li>
 		<li><a href="NoticeBoardTopListServlet">상의 상품 목록</a></li>
@@ -59,13 +63,12 @@ div {
 		<li><a href="NoticeBoardBottomListServlet">하의 상품 목록</a></li>
 		<li><a href="NoticeBoardShoesListServlet">신발 상품 목록</a></li>
 		<ul style="float: right; list-style-type: none;">
-			<li><a href="/ShoppingMall/login">로그인</a></li>
+			<li><a href="login">로그인</a></li>
 			<li><a href="/ShoppingMall/addCustomer">회원 가입</a></li>
 		</ul>
 	</ul>
 	<div>
-		<a href="#"><img class="img_size" src="images/arrow.png"></a>
+		<a href="index.html"><img class="img_size" src="images/arrow.png"></a>
 	</div>
-
 </body>
 </html>
