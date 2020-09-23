@@ -35,10 +35,22 @@ li a:hover:not(.current) {
 	background-color: #CD853F;
 	color: white;
 }
+
+.img_size {
+	width: auto;
+	height: auto;
+	max-width: 50px;
+	max-height: 50px;
+}
+
+div {
+	position: fixed;
+	bottom: 5px;
+	right: 5px;
+}
 </style>
 </head>
 <body>
-
 	<h1>이정장의 쇼핑몰 메인 화면 입니다</h1>
 	<ul>
 		<li><a href="NoticeBoardAllListServlet">전체 상품 목록</a></li>
@@ -51,6 +63,9 @@ li a:hover:not(.current) {
 			<li><a href="/ShoppingMall/addCustomer">회원 가입</a></li>
 		</ul>
 	</ul>
+	<div>
+		<a href="#"><img class="img_size" src="images/arrow.png"></a>
+	</div>
 
 </body>
 </html>
