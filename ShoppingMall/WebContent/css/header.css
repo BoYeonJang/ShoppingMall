@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+/* 노팅힐 메인 이미지 */
+.main_image {
+	width: 30%;
+	height: auto;
+	display: block;
+	margin: auto;
+}

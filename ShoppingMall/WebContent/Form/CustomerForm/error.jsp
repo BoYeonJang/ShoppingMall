@@ -8,6 +8,6 @@
 </head>
 <body>
 	<h1>수정을 완료했습니다! 다시 로그인해주세요!</h1>
-	<a href="loginForm.jsp">로그인하러가기</a>
+	<a href="Form/CustomerForm/loginForm.jsp">로그인하러가기</a>
 </body>
 </html>

@@ -36,7 +36,7 @@ public class CustomerLoginServlet extends HttpServlet {
 		RequestDispatcher rd = request.getRequestDispatcher("Form/CustomerForm/customerOneSearch.jsp");
 		rd.forward(request, response);
 		
-		response.sendRedirect("Form/CustomerForm/loginForm.jsp");
+		
 
 	}
 
