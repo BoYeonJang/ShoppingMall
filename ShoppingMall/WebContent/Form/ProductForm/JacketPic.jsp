@@ -20,8 +20,12 @@
 	<%=product.getProductPrice()%><br>
 	개수: <input type="text" name="count">
 	사이즈: <input type="text" value=<%=product.getProductSize()%> name="size">
-	<input type="hidden" name="productId" value=<%=product.getProductId()%>>
+	<input type="hidden" name="productId" value=<%=product.getProductId()%>><br>
 	<input type="submit" value="구매하기"><br>
+	</form>
+	
+	<form action="ShoppingBagServlet">
+		<input type="submit" value="장바구니"><br>
 	</form>
 
 </body>
