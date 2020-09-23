@@ -113,7 +113,7 @@ public class ProductDAO {
 				product.setProductId(rs.getString(2));
 				product.setProductPrice(rs.getInt(3));
 				product.setProductSize(rs.getString(4));
-				product.setProductPicId(rs.getInt(5));
+				product.setProductPicId(rs.getInt("productPicId"));
 				product.setProductType(rs.getString(6));
 			}
 
