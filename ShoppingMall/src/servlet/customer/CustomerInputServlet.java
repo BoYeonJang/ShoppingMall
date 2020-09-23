@@ -40,7 +40,7 @@ public class CustomerInputServlet extends HttpServlet {
 
 		System.out.println(customerdao.addCustomer(customer));
 
-		response.sendRedirect("Form/CustomerForm/loginForm.jsp");
+		response.sendRedirect("index.html");
 	}
 
 }
