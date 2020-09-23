@@ -16,11 +16,11 @@ public class CustomerDelServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String id = request.getParameter("customerid");
+		String id = request.getParameter("customerId");
 		CustomerDAO dao = new CustomerDAO();
 		System.out.println(dao.deleteCustomer(id));
 
-		response.sendRedirect("customerList");
+		response.sendRedirect("Main.html");
 	}
 
 }

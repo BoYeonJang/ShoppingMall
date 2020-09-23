@@ -28,7 +28,7 @@ public class CustomerUpdateServlet extends HttpServlet {
 
 		CustomerDAO customerdao = new CustomerDAO();
 		if (customerdao.updateCustomer(customer)) {
-			response.sendRedirect("customerList");
+			response.sendRedirect("customerOneSearch");
 		} else {
 			response.sendRedirect("updateFormCustomer?customerid=" + customer.getId());
 		}

@@ -3,15 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <title>이정장의 쇼핑몰</title>
+<style>
+ul {
+	background-color: #FFDAB9;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+li {
+	float: left;
+}
+
+li a {
+	display: block;
+	background-color: #FFDAB9;
+	color: #000000;
+	padding: 8px;
+	text-decoration: none;
+	text-align: center;
+	font-weight: bold;
+}
+
+li a.current {
+	background-color: #FF6347;
+	color: white;
+}
+
+li a:hover:not(.current) {
+	background-color: #CD853F;
+	color: white;
+}
+</style>
 </head>
 <body>
 
-<h1> 이정장의 쇼핑몰 메인 화면 입니다 </h1>
-<a href ="NoticeBoardAllListServlet">전체 상품 목록</a><br>
-<a href ="NoticeBoardTopListServlet">상의 상품 목록</a><br>
-<a href ="NoticeBoardJacketListServlet">자켓 상품 목록</a><br>
-<a href ="NoticeBoardBottomListServlet">하의 상품 목록</a><br>
-<a href ="NoticeBoardShoesListServlet">신발 상품 목록</a>
+	<h1>이정장의 쇼핑몰 메인 화면 입니다</h1>
+	<ul>
+		<li><a href="NoticeBoardAllListServlet">전체 상품 목록</a></li>
+		<li><a href="NoticeBoardTopListServlet">상의 상품 목록</a></li>
+		<li><a href="NoticeBoardJacketListServlet">자켓 상품 목록</a></li>
+		<li><a href="NoticeBoardBottomListServlet">하의 상품 목록</a></li>
+		<li><a href="NoticeBoardShoesListServlet">신발 상품 목록</a></li>
+		<ul style="float: right; list-style-type: none;">
+			<li><a href="/ShoppingMall/login">로그인</a></li>
+			<li><a href="/ShoppingMall/addCustomer">회원 가입</a></li>
+		</ul>
+	</ul>
 
 </body>
 </html>

@@ -2,7 +2,7 @@
 <%@page import="shopping.vo.ProductVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +11,9 @@
 </head>
 <body>
 
-	<% List<NoticeBoardVO> noticeBoardAllList = (List<NoticeBoardVO>)request.getAttribute("noticeBoardAllList"); %>
+	<%
+		List<NoticeBoardVO> noticeBoardAllList = (List<NoticeBoardVO>) request.getAttribute("noticeBoardAllList");
+	%>
 	<table>
 		<thead>
 			<tr>
@@ -20,16 +22,20 @@
 				<td>Content</td>
 			</tr>
 		</thead>
-		<% for(NoticeBoardVO notice : noticeBoardAllList) {%>
+		<%
+			for (NoticeBoardVO notice : noticeBoardAllList) {
+		%>
 		<tbody>
 			<tr>
-				<td><%= notice.getNoticeNo()%></td>
-				<td><%= notice.getNoticeTitle()%></td>
-				<td><%= notice.getNoticeCont()%></td>
+				<td><%=notice.getNoticeNo()%></td>
+				<td><%=notice.getNoticeTitle()%></td>
+				<td><%=notice.getNoticeCont()%></td>
 		</tbody>
-		<%} %>
-	
-	
+		<%
+			}
+		%>
+
+
 	</table>
 
 </body>

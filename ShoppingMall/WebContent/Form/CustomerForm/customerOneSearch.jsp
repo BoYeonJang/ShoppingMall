@@ -10,7 +10,7 @@
 </head>
 <body>
 
-<% CustomerVO customer = (CustomerVO)request.getAttribute("id"); %>
+<% CustomerVO customer = (CustomerVO)request.getAttribute("customer"); %>
 	<h1>회원 목록</h1>
 	<table>
 		<thead>
