@@ -4,12 +4,10 @@ public class NoticeBoardVO {
 	
 
 	private int noticeNo;
-	// 제목
 	private String noticeTitle;
-	// 내용
 	private String noticeCont;
-	
 	private String noticeCategory;
+	private int noticePicId;
 	
 	
 	
@@ -39,11 +37,22 @@ public class NoticeBoardVO {
 		this.noticeCategory = noticeCategory;
 	}
 	
+	
+	
+	public int getNoticePicId() {
+		return noticePicId;
+	}
+	public void setNoticePicId(int noticePicId) {
+		this.noticePicId = noticePicId;
+	}
+	
 	@Override
 	public String toString() {
 		return "NoticeBoardVO [noticeNo=" + noticeNo + ", noticeTitle=" + noticeTitle + ", noticeCont=" + noticeCont
-				+ ", noticeCategory=" + noticeCategory + "]";
+				+ ", noticeCategory=" + noticeCategory + ", noticePicId=" + noticePicId + "]";
 	}
+	
+	
 	
 	
 	

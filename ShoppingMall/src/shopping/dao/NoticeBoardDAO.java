@@ -17,7 +17,7 @@ public class NoticeBoardDAO {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		boolean resultFlag = false;
-		String sql = "insert into NoticeBoard values (?,?,?,?)";
+		String sql = "insert into NoticeBoard values (?,?,?,?,?)";
 		try {
 			// 3. 접속
 			conn = DBUtil.getConnection();
@@ -27,6 +27,7 @@ public class NoticeBoardDAO {
 			ps.setString(2, notice.getNoticeCategory());
 			ps.setString(3, notice.getNoticeTitle());
 			ps.setString(4, notice.getNoticeCont());
+			ps.setInt(5, notice.getNoticePicId());
 			
 			// 5. 실행
 			int count = ps.executeUpdate();
@@ -68,7 +69,7 @@ public class NoticeBoardDAO {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		boolean resultFlag = false;
-		String sql = "insert into NoticeBoard  values (?,?,?,?)";
+		String sql = "insert into NoticeBoard  values (?,?,?,?,?)";
 		try {
 			// 3. 접속
 			conn = DBUtil.getConnection();
@@ -77,8 +78,9 @@ public class NoticeBoardDAO {
 			ps.setInt(1, noticeNo);
 			ps.setString(2, product.getProductType());
 			ps.setString(3, product.getProductName());
-			ps.setString(4, "product id: " + product.getProductId() + " product price: " + product.getProductPrice()
-					+ " price size: " + product.getProductSize() + " price type: " + product.getProductType());
+			ps.setString(4, " product price: " + product.getProductPrice()+" price size: " + product.getProductSize());
+			ps.setInt(5, product.getProductPicId());
+			
 			// 5. 실행
 			int count = ps.executeUpdate();
 			if (count == 1)
@@ -134,9 +136,9 @@ public class NoticeBoardDAO {
 			conn = DBUtil.getConnection();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, notice.getNoticeCategory());
-			ps.setString(1, notice.getNoticeCont());
 			ps.setString(2, notice.getNoticeTitle());
-			ps.setInt(3, notice.getNoticeNo());
+			ps.setString(3, notice.getNoticeCont());
+			ps.setInt(4, notice.getNoticeNo());
 
 			int count = ps.executeUpdate();
 			if (count == 1)
@@ -178,7 +180,7 @@ public class NoticeBoardDAO {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-		String sql = "select noticeNo, noticeCategory, noticeTitle, noticeCont from NoticeBoard where noticeNo=?";
+		String sql = "select noticeNo, noticeCategory, noticeTitle, noticeCont, noticePicId from NoticeBoard where noticeNo=?";
 		try {
 			conn = DBUtil.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -188,8 +190,11 @@ public class NoticeBoardDAO {
 			if (rs.next()) {
 				notice = new NoticeBoardVO();
 				notice.setNoticeNo(rs.getInt(1));
-				notice.setNoticeTitle(rs.getString(2));
-				notice.setNoticeCont(rs.getString(3));
+				notice.setNoticeCategory(rs.getString(2));
+				notice.setNoticeTitle(rs.getString(3));
+				notice.setNoticeCont(rs.getString(4));
+				notice.setNoticePicId(rs.getInt(5));
+				
 			}
 
 		} catch (Exception e) {
@@ -209,7 +214,7 @@ public class NoticeBoardDAO {
 		ResultSet rs = null;
 		try {
 			conn = DBUtil.getConnection();
-			ps = conn.prepareStatement("select noticeNo, noticeCategory, noticeTitle, noticeCont from NoticeBoard");
+			ps = conn.prepareStatement("select noticeNo, noticeCategory, noticeTitle, noticeCont, noticePicId from NoticeBoard");
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				NoticeBoardVO notice = new NoticeBoardVO();
@@ -217,6 +222,7 @@ public class NoticeBoardDAO {
 				notice.setNoticeCategory(rs.getString(2));
 				notice.setNoticeTitle(rs.getString(3));
 				notice.setNoticeCont(rs.getString(4));
+				notice.setNoticePicId(rs.getInt(5));
 
 				noticeList.add(notice);
 			}
@@ -237,7 +243,7 @@ public class NoticeBoardDAO {
 		ResultSet rs = null;
 		try {
 			conn = DBUtil.getConnection();
-			ps = conn.prepareStatement("select noticeNo, noticeTitle, noticeCont from NoticeBoard where noticeCategory=?");
+			ps = conn.prepareStatement("select noticeNo, noticeTitle, noticeCont, noticeCategory, noticePicId from NoticeBoard where noticeCategory=?");
 			ps.setString(1, category);
 			
 			rs = ps.executeQuery();
@@ -246,7 +252,10 @@ public class NoticeBoardDAO {
 				notice.setNoticeNo(rs.getInt(1));
 				notice.setNoticeTitle(rs.getString(2));
 				notice.setNoticeCont(rs.getString(3));
+				notice.setNoticeCategory(category);
 				//notice.setNoticeCategory(rs.getString(4));
+				notice.setNoticePicId(rs.getInt(5));
+				
 
 				noticeList.add(notice);
 			}
@@ -271,7 +280,9 @@ public class NoticeBoardDAO {
 
 		NoticeBoardDAO ndao = new NoticeBoardDAO();
 		//ndao.addProductToNoticeBoard(productList);
-		System.out.println(ndao.getNoticeListWithCategory("신발"));
+		//System.out.println(ndao.getNoticeListWithCategory("상의"));
+		//System.out.println(ndao.getNoticeList());
+		NoticeBoardVO notice = new NoticeBoardVO();
 	}
 
 }

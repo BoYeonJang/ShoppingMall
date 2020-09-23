@@ -1,7 +1,6 @@
 package servlet.noticeboard;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,24 +9,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import shopping.dao.NoticeBoardDAO;
 import shopping.dao.ProductDAO;
-import shopping.vo.NoticeBoardVO;
 import shopping.vo.ProductVO;
 
-
-@WebServlet("/NoticeBoardTopListServlet")
-public class NoticeBoardTopListServlet extends HttpServlet {
+/**
+ * Servlet implementation class BottomPicServlet
+ */
+@WebServlet("/BottomPicServlet")
+public class BottomPicServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		NoticeBoardDAO dao = new NoticeBoardDAO();
-		List<NoticeBoardVO> noticeBoardTopList = dao.getNoticeListWithCategory("상의");
-		//System.out.println(noticeBoardTopList);
+		String productName = request.getParameter("noticeTitle"); 
+		System.out.println(productName);
+		//int noticeNo = Integer.parseInt(no);
+	
+		ProductDAO dao = new ProductDAO();
+		ProductVO product = dao.getProduct(productName);
+		System.out.println(product);
 		
-		request.setAttribute("noticeBoardTopList", noticeBoardTopList);
-		RequestDispatcher rd = request.getRequestDispatcher("Form/NoticeBoardForm/NoticeBoardTopList.jsp");
+		request.setAttribute("product", product);
+		RequestDispatcher rd = request.getRequestDispatcher("Form/ProductForm/BottomPic.jsp");
 		rd.forward(request, response);
+		
 	}
 
 }

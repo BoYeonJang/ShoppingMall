@@ -17,7 +17,7 @@ public class ProductDAO {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		boolean resultFlag = false;
-		String sql = "insert into product values (?,?,?,?,?)";
+		String sql = "insert into product values (?,?,?,?,?,?)";
 		try {
 			// 3. 접속
 			conn = DBUtil.getConnection();
@@ -28,6 +28,7 @@ public class ProductDAO {
 			ps.setInt(3, product.getProductPrice());
 			ps.setString(4, product.getProductSize());
 			ps.setString(5, product.getProductType());
+			ps.setInt(6, product.getProductPicId());
 			
 			// 5. 실행
 			int count = ps.executeUpdate();
@@ -47,7 +48,7 @@ public class ProductDAO {
 		boolean resultFlag = false;
 		Connection conn = null;
 		PreparedStatement ps = null;
-		String sql = "update product set productName=?, productPrice =?, productSize=?, productType=? where productId = ?";
+		String sql = "update product set productName=?, productPrice =?, productSize=?, productType=?, productPic=? where productId = ?";
 		try {
 			conn = DBUtil.getConnection();
 			ps = conn.prepareStatement(sql);
@@ -55,7 +56,8 @@ public class ProductDAO {
 			ps.setInt(2, product.getProductPrice());
 			ps.setString(3, product.getProductSize());
 			ps.setString(4, product.getProductType());
-			ps.setString(5, product.getProductId());
+			ps.setInt(5, product.getProductPicId());
+			ps.setString(6, product.getProductId());
 
 			int count = ps.executeUpdate();
 			if (count == 1)
@@ -91,7 +93,7 @@ public class ProductDAO {
 
 	// 조회
 	// deptno 에 해당하는 부서정보 한건 조회
-	public ProductVO getProduct(String productId) {
+	public ProductVO getProduct(String productName) {
 		ProductVO product = null;
 		Connection conn = null;
 		PreparedStatement ps = null;
@@ -99,9 +101,9 @@ public class ProductDAO {
 		String sql = "";
 		try {
 			conn = DBUtil.getConnection();
-			sql = "select * from product where productId=?";
+			sql = "select * from product where productName=?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, productId);
+			ps.setString(1, productName);
 			
 			rs = ps.executeQuery();
 			
@@ -111,7 +113,8 @@ public class ProductDAO {
 				product.setProductId(rs.getString(2));
 				product.setProductPrice(rs.getInt(3));
 				product.setProductSize(rs.getString(4));
-				product.setProductType(rs.getString(5));
+				product.setProductPicId(rs.getInt(5));
+				product.setProductType(rs.getString(6));
 			}
 
 		} catch (Exception e) {
@@ -175,6 +178,7 @@ public class ProductDAO {
 				product.setProductPrice(rs.getInt(3));
 				product.setProductSize(rs.getString(4));
 				product.setProductType(rs.getString(5));
+				product.setProductPicId(rs.getInt(6));
 
 				productList.add(product);
 			}
@@ -207,6 +211,7 @@ public class ProductDAO {
 				product.setProductPrice(rs.getInt(3));
 				product.setProductSize(rs.getString(4));
 				product.setProductType(rs.getString(5));
+				product.setProductPicId(rs.getInt(6));
 
 				productList.add(product);
 			}
@@ -220,18 +225,19 @@ public class ProductDAO {
 	}
 	
 	public static void main(String[] args) {
-//		ProductVO product = new ProductVO();
-//		product.setProductId("126");
+		ProductVO product = new ProductVO();
 //		product.setProductName("보야 클래식 로퍼");
-//		product.setProductPrice(27400);
-//		product.setProductSize("240~");
+//		product.setProductId("126");
+//		product.setProductPrice(34900);
+//		product.setProductSize("240");
 //		product.setProductType("신발");
+//		product.setProductPicId(16);
 		
 		ProductDAO dao = new ProductDAO();
 		//dao.addProduct(product);
 		//dao.deleteProduct("111");
-		System.out.println(dao.getProductList());
-		//System.out.println(dao.getProductListWithType("상의"));
+		//System.out.println(dao.getProductList());
+		System.out.println(dao.getProductListWithType("상의"));
 		
 	}
 }

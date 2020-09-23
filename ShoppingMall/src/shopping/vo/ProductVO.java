@@ -7,6 +7,7 @@ public class ProductVO {
 	private int productPrice;
 	private String productSize;
 	private String productType;
+	private int productPicId;
 	
 	
 	public String getProductName() {
@@ -40,10 +41,19 @@ public class ProductVO {
 	public void setProductType(String productType) {
 		this.productType = productType;
 	}
+	
+	
+	public int getProductPicId() {
+		return productPicId;
+	}
+	public void setProductPicId(int productPicId) {
+		this.productPicId = productPicId;
+	}
+	
 	@Override
 	public String toString() {
 		return "product id: " + getProductId() + " product price: " + getProductPrice()
-		+ " price size: " + getProductSize() + " price type: " + getProductType();
+		+ " price size: " + getProductSize() + " price type: " + getProductType()+ " price picId: "+ getProductPicId();
 	}
 	
 	
