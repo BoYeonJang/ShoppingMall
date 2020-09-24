@@ -29,7 +29,7 @@
 			<tr>
 				<td><a
 					href="BottomPicServlet?noticeTitle=<%=notice.getNoticeTitle()%>">
-						<img src="images/<%=notice.getNoticePicId()%>.png"
+						<img src="images/bottom/<%=notice.getNoticePicId()%>.png"
 						alt="위의 이미지를 누르면 연결됩니다.">
 				</a></td>
 				<td><%=notice.getNoticeNo()%></td>

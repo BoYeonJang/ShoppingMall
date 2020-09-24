@@ -126,6 +126,40 @@ public class ProductDAO {
 		return product;
 	}
 	
+	public ProductVO getProductWithId(String productId) {
+		ProductVO product = null;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "";
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select * from product where productId=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, productId);
+			
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				product = new ProductVO();
+				product.setProductName(rs.getString(1));
+				product.setProductId(rs.getString(2));
+				product.setProductPrice(rs.getInt(3));
+				product.setProductSize(rs.getString(4));
+				product.setProductPicId(rs.getInt("productPicId"));
+				product.setProductType(rs.getString(6));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(conn, ps, rs);
+		}
+
+		return product;
+	}
+	
+	
 //	public ProductVO getProductWithType(String productType) {
 //		ProductVO product = null;
 //		Connection conn = null;
