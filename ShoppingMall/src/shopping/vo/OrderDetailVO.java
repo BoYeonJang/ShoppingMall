@@ -1,7 +1,8 @@
 package shopping.vo;
 
 public class OrderDetailVO {
-	  private int orderNumber;
+	  private String userId;
+	
 		private String productId;
 		private String productOption;
 		private int productCount;
@@ -14,14 +15,14 @@ public class OrderDetailVO {
 		public void setProductOption(String productOption) {
 			this.productOption = productOption;
 		}
+		public String getUserId() {
+			return userId;
+		}
+		public void setUserId(String userId) {
+			this.userId = userId;
+		}
 		
 		
-		public int getOrderNumber() {
-			return orderNumber;
-		}
-		public void setOrderNumber(int orderNumber) {
-			this.orderNumber = orderNumber;
-		}
 		public String getProductId() {
 			return productId;
 		}

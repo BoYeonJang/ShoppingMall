@@ -1,3 +1,8 @@
+<%@page import="shopping.vo.OrderDetailVO"%>
+<%@page import="java.util.List"%>
+<%@page import="shopping.dao.OrderDetailDAO"%>
+<%@page import="shopping.dao.ProductDAO"%>
+<%@page import="shopping.vo.ProductVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -26,10 +31,28 @@
 </head>
 
 <%
-	String pid=request.getParameter("productId");
-	String count=request.getParameter("count");
-	String size=request.getParameter("size");
+	String pid="";
+	pid=request.getParameter("productId");
+	String count="";
+	count=request.getParameter("count");
+	String size="";
+	size=request.getParameter("size");
+	boolean dir=true;
+	int price=0;
+	int sprice=0;
 	
+	String userId="";
+	userId=request.getParameter("userId");
+	
+	OrderDetailDAO dao = new OrderDetailDAO();
+	List<OrderDetailVO> vo =dao.getOrderDetailList(userId);
+	if(vo==null)
+		dir = false;
+	ProductDAO pdao = new ProductDAO();
+	ProductVO pvo=new ProductVO();
+	
+	if(pid!="")
+		pvo = pdao.getProductWithId(pid);
 %>
 
 <body>
@@ -37,12 +60,13 @@
   <section class="checkout_area section_padding">
     <div class="container">
       
-   
+    <form  action="order" class="row contact_form">
+           
       <div class="billing_details">
         <div class="row">
           <div class="col-lg-8">
             <h3>Customer Details</h3>
-            <form class="row contact_form" action="#" method="post" novalidate="novalidate">
+           <!--   <form class="row contact_form" action="#" method="post" novalidate="novalidate">-->
               <div class="col-md-6 form-group p_star">
               <span class="billing_details">이름</span>
                  <input type="text" class="form-control" id="first" name="name" />
@@ -79,29 +103,45 @@
                     <span>Total</span>
                   </a>
                 </li>
-                <%for(int i=0; i<3;i++){ %>
+                <%
+                	if(dir)
+                	{
+                		for(OrderDetailVO s : vo){	
+                		pvo=pdao.getProductWithId(s.getProductId());
+                	 %>
                 <li>
-                  <a href="#">아이폰
-                    <span class="middle">x 02</span>
-                    <span class="last">$720.00</span>
+                  <a href="#"><%=pvo.getProductName() %>
+                    <span class="middle"><%=s.getProductCount() %></span>
+                    <span class="last"><%=pvo.getProductPrice() %></span>
                   </a>
                 </li>
-              <%} %>
+              <%
+              
+              	sprice+=(pvo.getProductPrice() * s.getProductCount());
+                		} price=sprice; }else{ %>
+                <li>
+                  <a href="#"><%=pvo.getProductName() %>
+                    <span class="middle"><%=count %></span>
+                    <span class="last"><%=pvo.getProductPrice() %></span>
+                  </a>
+                </li>
+                <% price+=(Integer.parseInt(count) * pvo.getProductPrice());
+                } %>
               </ul>
               <ul class="list list_2">
                 <li>
                   <a href="#">제품가격
-                    <span>$2160.00</span>
+                   <span><%=sprice %>원</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">배송비
-                    <span>기본 요금: $50.00</span>
+                    <span>기본 요금: 3000원</span>
                   </a>
                 </li>
                 <li>
                   <a href="#">결제 금액
-                    <span>$2210.00</span>
+                    <span><%=price + 3000 %>원</span>
                   </a>
                 </li>
               </ul>
@@ -131,13 +171,24 @@
                 <label for="f-option4">I’ve read and accept the </label>
                 <a href="#">terms & conditions*</a>
               </div>
-              <a class="btn_3" href="order?method=계좌이체&add=우리집&message=없음&userId=d555&price=10000">결제하기</a>
+             <input type="hidden" name="userId" value="<%=userId%>">
+             <input type="hidden" name="price" value="<%=price+3000%>">
+             	<input type="submit" class="btn_3" value="결제하기">
+             	
+               <%-- <a class="btn_3" href="order?method=계좌이체&add=우리집&message=없음&userId=<%=userId %>&price=<%=price+3000%>">결제하기</a> --%>
+          
             </div>
+            
           </div>
+          
         </div>
+        
       </div>
+      </form>
     </div>
+    
   </section>
+  
   <!--================End Checkout Area =================-->
 
 	

@@ -1,3 +1,9 @@
+<%@page import="shopping.vo.OrderDetailVO"%>
+<%@page import="shopping.vo.OrderVO"%>
+<%@page import="java.util.List"%>
+<%@page import="shopping.dao.OrderDetailDAO"%>
+<%@page import="shopping.vo.ProductVO"%>
+<%@page import="shopping.dao.ProductDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,12 +31,21 @@
       <link rel="stylesheet" href="assets/css/nice-select.css">
       <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<style>
-
-</style>
+<%
+	String userId=(String)request.getAttribute("userId");
+	
+	OrderDetailVO vo = new OrderDetailVO();		
+	vo=(OrderDetailVO)request.getAttribute("detail");
+	
+	OrderDetailDAO dao = new OrderDetailDAO();
+	List<OrderDetailVO> lvo = dao.getOrderDetailList(userId);
+	if(vo!=null)
+		lvo.add(vo);
+	ProductDAO pdao = new ProductDAO();
+	
+%>
 <body>
 	<form action= "orderForm.jsp" >
-	<input type="hidden" name="price" value="150">
     <section class="cart_area section_padding">
     <div class="container">
       <div class="cart_inner">
@@ -45,19 +60,23 @@
               </tr>
             </thead>
             <tbody>
+            <%for(OrderDetailVO ovo : lvo){
+            	ProductVO pvo = pdao.getProductWithId(ovo.getProductId());
+            	%>
               <tr>
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="assets/img/arrivel/arrivel_1.png" alt="" />
+                      <img src="/ShoppingMall/images/<%=pvo.getProductType() %>/<%=pvo.getProductPicId() %>" alt="" />
                     </div>
                     <div class="media-body">
-                      <p >아이폰</p>
+                      <p ><%=pvo.getProductName() %></p>
+                      <span class="btn_1" href="delOrderDetail?uid=<%=userId%>&pid=<%=ovo.getProductId()%>">삭제</span>
                     </div>
                   </div>
                 </td>
                 <td>
-                  <h5>360만원</h5>
+                  <h5><%=pvo.getProductPrice() %>만원</h5>
                 </td>
                 <td>
                   <div class="product_count">
@@ -72,21 +91,21 @@
                       <i class="ti-angle-down"></i>
                     </button> -->
                     <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                    <input class="input-number" type="text" name="count" value="1" min="0" max="10">
+                    <input class="input-number" type="text" id="count" name="count" value="1" min="0" max="10">
                     <span class="input-number-increment"> <i class="ti-plus" ></i></span>
                   </div>
                 </td>
                 <td>
-                  <h5>720만원</h5>
+                  <h5><%=ovo.getPrice() %>만원</h5>
                 </td>
               </tr>
             
-            
+            <%} %>
             </tbody>
           </table>
           <div class="checkout_btn_inner float-right">
-          	<a class="btn_1" href="#">쇼핑 계속하기</a>
-          	<input type="submit" value="결제하기" class ="btn_1"> 
+          	<a class="btn_1" href="/ShoppingMall/index.html">쇼핑 계속하기</a>
+          	<input type="submit" value="결제하기" class ="btn_1">
           </div>
         </div>
       </div>
