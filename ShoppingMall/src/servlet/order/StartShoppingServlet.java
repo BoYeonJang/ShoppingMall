@@ -22,14 +22,17 @@ public class StartShoppingServlet extends HttpServlet {
 		
 		String customerId = request.getParameter("id");
 		String password = request.getParameter("password");
+		
+		HttpSession session= request.getSession();
+		session.setAttribute("customerId", customerId);
+		
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  
 		// forwarding 할 때는 파일 위치만 찾는거니까 자신의 위치에서부터 찾는것
 		// redirect 할 때는 전체 url 링크로 보내줘야 하니까 절대경로로부터 
 		//새롭게 로그인 상태로 다시 메인화면으로 (로그아웃으로 바뀌어 있고 누르면 다시 로그인)
 		rd.forward(request, response);
 		
-		HttpSession session= request.getSession();
-		session.setAttribute("customerId", customerId);
+		
 	}
 
 }

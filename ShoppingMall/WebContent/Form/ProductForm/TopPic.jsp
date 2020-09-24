@@ -6,9 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Product Details</title>
+<link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 </head>
 <body>
-
+<%@ include file="/header/header.jsp"%>
 <% ProductVO product = (ProductVO) request.getAttribute("product"); %>
 
 	<img src="/ShoppingMall/images/상의/<%=product.getProductPicId()%>.png" alt="위의 이미지를 누르면 연결됩니다.">
@@ -20,10 +21,13 @@
 	개수: <input type="text" name="count">
 	사이즈: <input type="text" value=<%=product.getProductSize()%> name="size">
 	<input type="hidden" name="productId" value=<%=product.getProductId()%>><br>
+	<input type="hidden" name="customerId" value=<%=product.getProductId()%>><br>
 	<input type="submit" value="구매하기"><br>
 	</form>
 	
 	<form action="/ShoppingMall/Form/OrderForm/orderDetailForm.jsp">
+	<input type="hidden" name="productId" value=<%=product.getProductId()%>><br>
+	<input type="hidden" name="customerId" value=<%=product.getProductId()%>><br>
 		<input type="submit" value="장바구니에 담기"><br>
 	</form>
 
