@@ -6,7 +6,15 @@
 		<div class="topArea">
 			<div id="topQuick" class="layout_customer">
 				<ul>
-					<li><a href="/ShoppingMall/Form/CustomerForm/loginForm.jsp">로그인</a></li>
+					<% String customerId= (String)session.getAttribute("customerId");
+					
+					 if (customerId !=null){
+						 %>
+						 <li><a href="/ShoppingMall/LogoutServlet">로그아웃</a></li>
+					<% }else{
+						%> <li><a href="/ShoppingMall/Form/CustomerForm/loginForm.jsp">로그인</a></li>
+					<% }%>
+					
 					<li><a href="/ShoppingMall/Form/CustomerForm/inputForm.jsp">회원가입</a></li>
 					<li><a href="">마이페이지</a></li>
 					<li><a href="">장바구니</a></li>

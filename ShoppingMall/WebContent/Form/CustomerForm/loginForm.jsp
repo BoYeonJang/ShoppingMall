@@ -12,8 +12,7 @@
 	<div class="login_page">
 		<div class="form">
 			<h3>가입하신 아이디와 비밀번호를 입력해주세요.</h3>
-			<form class="login_form" action="/ShoppingMall/CustomerLoginServlet"
-				method="post">
+			<form class="login_form" action="/ShoppingMall/StartShoppingServlet" method="post">
 				<input type="text" placeholder="id" name="id"><br> <input
 					type="password" placeholder="password" name="password"><br>
 				<input class="login_button" type="submit" value="로그인">

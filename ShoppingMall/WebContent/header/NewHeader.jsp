@@ -26,7 +26,7 @@
 			<div id="category" class="layout_category">
 				<ul>
 					<li><a href="NoticeBoardAllListServlet">전체</a></li>
-					<li><a href="NoticeBoardTopListServlet">상의</a></li>
+					<li><a href="NoticeBoardTopListServlet?customerId=<%%>">상의</a></li>
 					<li><a href="NoticeBoardJacketListServlet">자켓</a></li>
 					<li><a href="NoticeBoardBottomListServlet">하의</a></li>
 					<li><a href="NoticeBoardShoesListServlet">신발</a></li>
@@ -36,5 +36,5 @@
 	</div>
 </header>
 <body>
-		<h2>???들어온거???</h2>
+		<% String customerId = (String) session.getAttribute("customerId"); %>
 </body>
