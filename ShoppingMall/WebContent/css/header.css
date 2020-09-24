@@ -9,6 +9,10 @@ header {
 	background: white;
 }
 
+.nav{
+	margin-bottom: 45px;
+}
+
 /* 노팅힐 메인 이미지 */
 .main_image {
 	width: 30%;
@@ -19,7 +23,7 @@ header {
 
 /* 상단 부분 */
 .layout_customer {
-	position: relative;
+	/* position: relative; */
 	color: #999;
 	padding: 0 14px;
 	margin-left: 1000px;
@@ -27,7 +31,7 @@ header {
 
 /* 카테고리 부분 */
 .layout_category {
-	position: relative;
+	/* position: relative; */
 	color: #999;
 	padding: 0 14px;
 }

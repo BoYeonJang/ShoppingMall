@@ -9,6 +9,7 @@
 <head>
 <meta charset="UTF-8">
 <title>AllProductList</title>
+<link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 </head>
 <body>
 	<%
@@ -42,9 +43,6 @@
 				%>
 			
 		</tbody>
-		<td><a href="index.html">메인 화면으로</a></td>
-
-
 	</table>
 
 </body>

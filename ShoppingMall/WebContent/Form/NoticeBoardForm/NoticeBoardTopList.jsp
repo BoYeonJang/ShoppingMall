@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>NoticeBoardTopList</title>
+<link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 </head>
 <body>
 	<%
@@ -31,7 +32,8 @@
 					href="TopPicServlet?noticeTitle=<%=notice.getNoticeTitle()%>">
 						<img
 						src="/ShoppingMall/images/상의/<%=notice.getNoticePicId()%>.png"
-						alt="위의 이미지를 누르면 연결됩니다."> <a></td>
+						alt="위의 이미지를 누르면 연결됩니다.">
+				</a></td>
 				<td><%=notice.getNoticeNo()%></td>
 				<td><%=notice.getNoticeTitle()%></td>
 				<td><%=notice.getNoticeCont()%></td>
@@ -40,11 +42,6 @@
 				%>
 			
 		</tbody>
-		<td><a href="index.html">메인 화면으로</a></td>
-
-
 	</table>
-
-
 </body>
 </html>
