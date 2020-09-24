@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import shopping.dao.CustomerDAO;
 import shopping.vo.CustomerVO;
 
-@WebServlet("/updateFormCustomer")
+@WebServlet("/CustomerUpdateFormServlet")
 public class CustomerUpdateFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

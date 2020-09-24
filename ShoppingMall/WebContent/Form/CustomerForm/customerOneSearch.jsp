@@ -35,8 +35,11 @@
 				<td><%=customer.getTel()%></td>
 				<td><%=customer.getAddress()%></td>
 				<td><%=customer.getEmail()%></td>
-				<td><a href="updateFormCustomer?customerId=<%=customer.getId()%>">수정</a></td>
+				<td><a href="CustomerUpdateFormServlet?customerId=<%=customer.getId()%>">수정</a></td>
 				<td><a href="deleteCustomer?customerId=<%=customer.getId()%>">삭제</a></td><br>
+				<!--<td><a href="/ShoppingMall/header/header.jsp?customerId=<%=customer.getId()%>">쇼핑 시작하기</a></td>  -->
+				<td><a href="StartShoppingServlet?customerId=<%=customer.getId()%>">쇼핑 시작하기</a></td>
+				
 			</tr>
 		</tbody>
 	</table>

@@ -11,7 +11,6 @@
 <title>AllProductList</title>
 </head>
 <body>
-
 	<%
 		List<NoticeBoardVO> noticeBoardAllList = (List<NoticeBoardVO>) request.getAttribute("noticeBoardAllList");
 	%>
