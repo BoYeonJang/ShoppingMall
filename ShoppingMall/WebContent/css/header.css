@@ -8,34 +8,17 @@
 	margin: auto;
 }
 
-ul {
-	background-color: #FFDAB9;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	overflow: hidden;
+.layout_customer {
+	position: relative;
+	color: #999;
+	padding: 0 5px;
+	font-size: 17px;
+	cursor: pointer;
 }
 
-li {
-	float: left;
-}
-
-li a {
-	display: block;
-	background-color: #FFDAB9;
-	color: #000000;
-	padding: 8px;
+a {
 	text-decoration: none;
-	text-align: center;
-	font-weight: bold;
-}
-
-li a.current {
-	background-color: #FF6347;
-	color: white;
-}
-
-li a:hover:not(.current) {
-	background-color: #CD853F;
-	color: white;
+	color: #353535;
+	transition: all 0.15s ease-in-out;
+	box-sizing: border-box !important;
 }
