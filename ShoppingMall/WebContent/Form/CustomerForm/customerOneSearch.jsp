@@ -9,8 +9,10 @@
 <title>조회</title>
 </head>
 <body>
-
-<% CustomerVO customer = (CustomerVO)request.getAttribute("customer"); %>
+	<%
+		CustomerVO customer = (CustomerVO) request.getAttribute("customer");
+	%>
+	<%@ include file="/header/header.jsp"%>
 	<h1>회원 목록</h1>
 	<table>
 		<thead>
@@ -35,8 +37,10 @@
 				<td><%=customer.getTel()%></td>
 				<td><%=customer.getAddress()%></td>
 				<td><%=customer.getEmail()%></td>
-				<td><a href="updateFormCustomer?customerId=<%=customer.getId()%>">수정</a></td>
-				<td><a href="deleteCustomer?customerId=<%=customer.getId()%>">삭제</a></td><br>
+				<td><a
+					href="updateFormCustomer?customerId=<%=customer.getId()%>">수정</a></td>
+				<td><a href="deleteCustomer?customerId=<%=customer.getId()%>">삭제</a></td>
+				<br>
 			</tr>
 		</tbody>
 	</table>

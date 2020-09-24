@@ -9,10 +9,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<%
 		List<NoticeBoardVO> noticeBoardBottomList = (List<NoticeBoardVO>) request.getAttribute("noticeBoardBottomList");
 	%>
+	<%@ include file="/header/header.jsp"%>
 	<table>
 		<thead>
 			<tr>
@@ -29,7 +29,8 @@
 			<tr>
 				<td><a
 					href="BottomPicServlet?noticeTitle=<%=notice.getNoticeTitle()%>">
-						<img src="/ShoppingMall/images/하의/<%=notice.getNoticePicId()%>.png"
+						<img
+						src="/ShoppingMall/images/하의/<%=notice.getNoticePicId()%>.png"
 						alt="위의 이미지를 누르면 연결됩니다.">
 				</a></td>
 				<td><%=notice.getNoticeNo()%></td>
