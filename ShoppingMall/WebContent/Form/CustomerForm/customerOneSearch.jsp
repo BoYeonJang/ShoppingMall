@@ -36,7 +36,7 @@
 				<td><%=customer.getAddress()%></td>
 				<td><%=customer.getEmail()%></td>
 				<td><a href="updateFormCustomer?customerId=<%=customer.getId()%>">수정</a></td>
-				<td><a href="deleteCustomer?customerId=<%=customer.getId()%>">삭제</a></td>
+				<td><a href="deleteCustomer?customerId=<%=customer.getId()%>">삭제</a></td><br>
 			</tr>
 		</tbody>
 	</table>

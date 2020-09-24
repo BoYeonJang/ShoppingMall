@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import shopping.dao.CustomerDAO;
 import shopping.vo.CustomerVO;
 
-@WebServlet("/login")
+@WebServlet("/CustomerLoginServlet")
 public class CustomerLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,8 +31,8 @@ public class CustomerLoginServlet extends HttpServlet {
 		// 2. DB에 id에 해당하는 member가 존재하는지 알아본다.
 		CustomerDAO customerdao = new CustomerDAO();
 		CustomerVO customer = customerdao.getCustomer(id);
+		
 		request.setAttribute("customer", customer);
-
 		RequestDispatcher rd = request.getRequestDispatcher("Form/CustomerForm/customerOneSearch.jsp");
 		rd.forward(request, response);
 		

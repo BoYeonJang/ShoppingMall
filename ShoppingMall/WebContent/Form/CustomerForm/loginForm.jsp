@@ -8,9 +8,9 @@
 </head>
 <body>
 	<h1>로그인</h1>
-	<form action="/ShoppingMall/login" method="post">
+	<form action="/ShoppingMall/CustomerLoginServlet" method="post">
 		<label>아이디: </label> <input type="text" name="id"><br>
-		<label>비밀번호: </label> <input type="text" name="password"><br>
+		<label>비밀번호: </label> <input type="password" name="password"><br>
 		<input type="submit" value="로그인">
 	</form>
 	<form action="inputForm.html" method="post">
