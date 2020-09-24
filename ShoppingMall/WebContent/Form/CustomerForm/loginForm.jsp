@@ -12,25 +12,17 @@
 	<div class="login_page">
 		<div class="form">
 			<h3>가입하신 아이디와 비밀번호를 입력해주세요.</h3>
-			<form class="login_form">
-				<input type="text" placeholder="id" name="id"><br>
-				<input type="password" placeholder="password" name="password"><br>
-				<button>LOGIN</button>
-				<button>회원가입하기</button>
+			<form class="login_form" action="/ShoppingMall/CustomerLoginServlet"
+				method="post">
+				<input type="text" placeholder="id" name="id"><br> <input
+					type="password" placeholder="password" name="password"><br>
+				<input class="login_button" type="submit" value="로그인">
+			</form>
+			<form class="register_form"
+				action="/ShoppingMall/Form/CustomerForm/inputForm.jsp" method="post">
+				<input type="submit" value="회원가입하기">
 			</form>
 		</div>
 	</div>
-	
-	
-	
-	
-	<form action="/ShoppingMall/CustomerLoginServlet" method="post">
-		<label>아이디: </label> <input type="text" name="id"><br> <label>비밀번호:
-		</label> <input type="password" name="password"><br> <input
-			type="submit" value="로그인">
-	</form>
-	<form action="inputForm.html" method="post">
-		<input type="submit" value="가입하러 가기">
-	</form>
 </body>
 </html>
