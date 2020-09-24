@@ -13,7 +13,7 @@
 
 	<img src="/ShoppingMall/images/<%=product.getProductPicId()%>.png" alt="위의 이미지를 누르면 연결됩니다.">
 
-	<form action ="TopOrderServlet">  <!-- 연호씨꺼랑 연결시키기 -->
+	<form action ="/ShoppingMall/Form/OrderForm/orderForm.jsp">  
 	<%=product.getProductName()%><br>
 	<%=product.getProductSize()%><br>
 	<%=product.getProductPrice()%><br>
@@ -23,8 +23,8 @@
 	<input type="submit" value="구매하기"><br>
 	</form>
 	
-	<form action="ShoppingBagServlet">
-		<input type="submit" value="장바구니"><br>
+	<form action="/ShoppingMall/Form/OrderForm/orderDetailForm.jsp">
+		<input type="submit" value="장바구니에 담기"><br>
 	</form>
 
 </body>
