@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>가입 정보 입력</title>
+<link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 </head>
 <body>
 	<%@ include file="/header/header.jsp"%>
