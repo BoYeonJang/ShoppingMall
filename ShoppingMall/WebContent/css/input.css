@@ -2,11 +2,11 @@
 
 .login_page {
 	position: absolute;
-	top: 50%; /* 위에서부터 50% */
+	top: 40%; /* 위에서부터 50% */
 	left: 47%; /* 왼쪽에서부터 47% */
 	border: solid 1px #ecf0f1; /* 테두리 */
 	width: 23rem; /* 가로 줄 */
-	height: 15rem; /* 세로 줄 */
+	height: 32rem; /* 세로 줄 */
 	margin-left: -150px;
 	margin-top: -80px;
 	text-align: center; /* 가운데 정렬 */
