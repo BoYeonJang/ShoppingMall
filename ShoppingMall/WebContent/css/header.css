@@ -1,5 +1,14 @@
 @charset "UTF-8";
 
+/* 헤더 고정 */
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: white;
+}
+
 /* 노팅힐 메인 이미지 */
 .main_image {
 	width: 30%;
