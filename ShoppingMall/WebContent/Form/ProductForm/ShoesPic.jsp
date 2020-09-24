@@ -10,7 +10,7 @@
 <body>
 <% ProductVO product = (ProductVO) request.getAttribute("product"); %>
 
-	<img src="/ShoppingMall/images/<%=product.getProductPicId()%>.png" alt="위의 이미지를 누르면 연결됩니다.">
+	<img src="/ShoppingMall/images/신발/<%=product.getProductPicId()%>.png" alt="위의 이미지를 누르면 연결됩니다.">
 
 	<form action ="/ShoppingMall/Form/OrderForm/orderForm.jsp"> 
 	<%=product.getProductName()%><br>

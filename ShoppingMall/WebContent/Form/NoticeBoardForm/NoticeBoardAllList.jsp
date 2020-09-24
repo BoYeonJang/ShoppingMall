@@ -1,3 +1,4 @@
+<%@page import="shopping.dao.ProductDAO"%>
 <%@page import="shopping.vo.NoticeBoardVO"%>
 <%@page import="shopping.vo.ProductVO"%>
 <%@page import="java.util.List"%>
@@ -24,16 +25,19 @@
 		</thead>
 		<%
 			for (NoticeBoardVO notice : noticeBoardAllList) {
+				String category = notice.getNoticeCategory();
+				ProductDAO dao = new ProductDAO();
+				ProductVO product = dao.getProductWithType(category);
 		%>
 		<tbody>
 			<tr>
-				<td><%=notice.getNoticeNo()%></td>
-				<td><%=notice.getNoticeTitle()%></td>
-				<td><%=notice.getNoticeCont()%></td>
+				<td><img src="/ShoppingMall/images/<%=product.getProductType()%>/<%=notice.getNoticePicId()%>.png" alt="위의 이미지를 누르면 연결됩니다."></td>
+				<td><%= notice.getNoticeNo()%></td>
+				<td><%= notice.getNoticeTitle()%></td>
+				<td><%= notice.getNoticeCont()%></td>
+		<%} %>
 		</tbody>
-		<%
-			}
-		%>
+		<td><a href="index.html">메인 화면으로</a></td>
 
 
 	</table>

@@ -280,9 +280,9 @@ public class NoticeBoardDAO {
 
 		NoticeBoardDAO ndao = new NoticeBoardDAO();
 		//ndao.addProductToNoticeBoard(productList);
-		//System.out.println(ndao.getNoticeListWithCategory("상의"));
-		//System.out.println(ndao.getNoticeList());
-		NoticeBoardVO notice = new NoticeBoardVO();
+		//System.out.println(ndao.getNoticeListWithCategory("신발"));
+		System.out.println(ndao.getNoticeList());
+		//NoticeBoardVO notice = new NoticeBoardVO();
 	}
 
 }

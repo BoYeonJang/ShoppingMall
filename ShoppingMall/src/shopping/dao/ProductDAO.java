@@ -160,37 +160,38 @@ public class ProductDAO {
 	}
 	
 	
-//	public ProductVO getProductWithType(String productType) {
-//		ProductVO product = null;
-//		Connection conn = null;
-//		PreparedStatement ps = null;
-//		ResultSet rs = null;
-//		String sql = "";
-//		try {
-//			conn = DBUtil.getConnection();
-//			sql = "select * from product where productType=?";
-//			ps = conn.prepareStatement(sql);
-//			ps.setString(1, productType);
-//			
-//			rs = ps.executeQuery();
-//			
-//			while (rs.next()) {
-//				product = new ProductVO();
-//				product.setProductName(rs.getString(1));
-//				product.setProductId(rs.getString(2));
-//				product.setProductPrice(rs.getInt(3));
-//				product.setProductSize(rs.getString(4));
-//				product.setProductType(rs.getString(5));
-//			}
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		} finally {
-//			DBUtil.close(conn, ps, rs);
-//		}
-//
-//		return product;
-//	}
+	public ProductVO getProductWithType(String productType) {
+		ProductVO product = null;
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		String sql = "";
+		try {
+			conn = DBUtil.getConnection();
+			sql = "select * from product where productType=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, productType);
+			
+			rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				product = new ProductVO();
+				product.setProductName(rs.getString(1));
+				product.setProductId(rs.getString(2));
+				product.setProductPrice(rs.getInt(3));
+				product.setProductSize(rs.getString(4));
+				product.setProductType(rs.getString(5));
+				product.setProductPicId(rs.getInt(6));
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBUtil.close(conn, ps, rs);
+		}
+
+		return product;
+	}
 
 	
 	public List<ProductVO> getProductList() {
@@ -272,6 +273,7 @@ public class ProductDAO {
 		//dao.deleteProduct("111");
 		//System.out.println(dao.getProductList());
 		System.out.println(dao.getProductListWithType("상의"));
+		//System.out.println(dao.getProductWithId("112"));
 		
 	}
 }
