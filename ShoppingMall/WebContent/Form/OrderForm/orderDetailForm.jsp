@@ -19,23 +19,22 @@
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
   <!-- CSS here -->
-      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-      <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-      <link rel="stylesheet" href="assets/css/flaticon.css">
-      <link rel="stylesheet" href="assets/css/slicknav.css">
-      <link rel="stylesheet" href="assets/css/animate.min.css">
-      <link rel="stylesheet" href="assets/css/magnific-popup.css">
-      <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-      <link rel="stylesheet" href="assets/css/themify-icons.css">
-      <link rel="stylesheet" href="assets/css/slick.css">
-      <link rel="stylesheet" href="assets/css/nice-select.css">
-      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/bootstrap.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/flaticon.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/slicknav.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/animate.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/magnific-popup.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/fontawesome-all.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/themify-icons.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/slick.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/nice-select.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/style.css">
 </head>
 <%
-	String userId=(String)request.getAttribute("userId");
-	
 	OrderDetailVO vo = new OrderDetailVO();		
 	vo=(OrderDetailVO)request.getAttribute("detail");
+	String userId=vo.getUserId();
 	
 	OrderDetailDAO dao = new OrderDetailDAO();
 	List<OrderDetailVO> lvo = dao.getOrderDetailList(userId);
@@ -71,12 +70,12 @@
                     </div>
                     <div class="media-body">
                       <p ><%=pvo.getProductName() %></p>
-                      <span class="btn_1" href="delOrderDetail?uid=<%=userId%>&pid=<%=ovo.getProductId()%>">삭제</span>
-                    </div>
+                      <span class="btn_1" onclick="location.href='delOrderDetail?uid=<%=userId%>&pid=<%=ovo.getProductId()%>'">삭제</span>
+                      </div>
                   </div>
                 </td>
                 <td>
-                  <h5><%=pvo.getProductPrice() %>만원</h5>
+                  <h5><%=pvo.getProductPrice() %>원</h5>
                 </td>
                 <td>
                   <div class="product_count">
@@ -96,7 +95,7 @@
                   </div>
                 </td>
                 <td>
-                  <h5><%=ovo.getPrice() %>만원</h5>
+                  <h5><%=ovo.getPrice() %>원</h5>
                 </td>
               </tr>
             
