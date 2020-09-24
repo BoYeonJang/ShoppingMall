@@ -12,22 +12,8 @@
 	text-align: center; /* 가운데 정렬 */
 }
 
-.id_button {
+.button {
 	background: #ecf0f1;
-	width: 21rem;
-	height: 3rem;
-	font-size: 0.75rem;
-}
-
-.password_button {
-	background: #ecf0f1;
-	width: 21rem;
-	height: 3rem;
-	font-size: 0.75rem;
-}
-
-.login_button {
-	background: #bdc3c7;
 	width: 21rem;
 	height: 3rem;
 	font-size: 0.75rem;
