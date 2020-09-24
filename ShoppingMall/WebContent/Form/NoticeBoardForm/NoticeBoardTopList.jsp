@@ -6,14 +6,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>NoticeBoardTopList</title>
+<title>상의 리스트 페이지 입니다</title>
+
 <link rel="stylesheet" href="/ShoppingMall/css/margin.css">
+
 </head>
 <body>
 	<%
 		List<NoticeBoardVO> noticeBoardTopList = (List<NoticeBoardVO>) request.getAttribute("noticeBoardTopList");
 	%>
+	
 	<%@ include file="/header/header.jsp"%>
+	
 	<table>
 		<thead>
 			<tr>

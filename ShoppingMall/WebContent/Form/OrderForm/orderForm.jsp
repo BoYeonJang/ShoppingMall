@@ -1,3 +1,5 @@
+<%@page import="shopping.dao.CustomerDAO"%>
+<%@page import="shopping.vo.CustomerVO"%>
 <%@page import="shopping.vo.OrderDetailVO"%>
 <%@page import="java.util.List"%>
 <%@page import="shopping.dao.OrderDetailDAO"%>
@@ -28,8 +30,8 @@
       <link rel="stylesheet" href="assets/css/slick.css">
       <link rel="stylesheet" href="assets/css/nice-select.css">
       <link rel="stylesheet" href="assets/css/style.css">
+      
 </head>
-
 <%
 	String pid="";
 	pid=request.getParameter("productId");
@@ -37,6 +39,8 @@
 	count=request.getParameter("count");
 	String size="";
 	size=request.getParameter("size");
+	String customerId="";
+	customerId = request.getParameter("customerId");
 	boolean dir=true;
 	int price=0;
 	int sprice=0;
@@ -53,6 +57,10 @@
 	
 	if(pid!="")
 		pvo = pdao.getProductWithId(pid);
+	
+	CustomerDAO cdao = new CustomerDAO();
+	CustomerVO customer = cdao.getCustomer(customerId);
+	
 %>
 
 <body>
@@ -69,18 +77,18 @@
            <!--   <form class="row contact_form" action="#" method="post" novalidate="novalidate">-->
               <div class="col-md-6 form-group p_star">
               <span class="billing_details">이름</span>
-                 <input type="text" class="form-control" id="first" name="name" />
+                 <input type="text" class="form-control" id="first" name="name" value="<%=customer.getName()%>"/>
                 
               </div>
               <div class="col-md-6 form-group p_star">
                 <span class="billing_details">핸드폰 번호</span>
-                <input type="text" class="form-control" id="number"  />
+                <input type="text" class="form-control" id="number" value="<%=customer.getTel()%>"  />
                 
               </div>
             
               <div class="col-md-12 form-group p_star">
                 <span class="billing_details">주소</span>
-                <input type="text" class="form-control" id="add1" name="add" />
+                <input type="text" class="form-control" id="add1" name="add" value="<%=customer.getAddress()%>" />
                 
               </div>
               
@@ -131,7 +139,7 @@
               <ul class="list list_2">
                 <li>
                   <a href="#">제품가격
-                   <span><%=sprice %>원</span>
+                   <span><%=pvo.getProductPrice() %>원</span>
                   </a>
                 </li>
                 <li>
@@ -141,7 +149,7 @@
                 </li>
                 <li>
                   <a href="#">결제 금액
-                    <span><%=price + 3000 %>원</span>
+                    <span><%=pvo.getProductPrice() + 3000 %>원</span>
                   </a>
                 </li>
               </ul>
