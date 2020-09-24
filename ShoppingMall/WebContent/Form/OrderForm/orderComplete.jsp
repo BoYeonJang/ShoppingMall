@@ -1,3 +1,7 @@
+<%@page import="shopping.dao.ProductDAO"%>
+<%@page import="shopping.vo.ProductVO"%>
+<%@page import="java.util.List"%>
+<%@page import="shopping.vo.OrderDetailVO"%>
 <%@page import="shopping.vo.OrderVO"%>
 <%@page import="shopping.dao.OrderDAO"%>
 <%@page import="java.net.URLDecoder"%>
@@ -34,6 +38,32 @@
 	justify-content : center;
 }
 </style>
+<%
+	Cookie[] cookies =request.getCookies();
+	String userId="";
+	int orderNumber=0;
+	if(cookies != null)
+	{
+		for(Cookie cookie : cookies)
+		{
+			String id=URLDecoder.decode(cookie.getName(),"utf-8");
+			if(id.equals("userId"))
+				{
+					userId = cookie.getValue();
+				}else if(id.equals("orderNumber"))
+				{
+					orderNumber=Integer.parseInt(cookie.getValue());
+				}
+		}	
+	}
+	OrderDAO dao = new OrderDAO();
+	OrderVO ov = dao.getOrder(orderNumber);
+	
+	ProductDAO pdao= new ProductDAO();
+	List<OrderDetailVO> lvo =(List<OrderDetailVO>)request.getAttribute("lvo");
+	
+	int price=0;
+%>
 <body>
 	<section class="confirmation_part section_padding">
     <div class="container">
@@ -48,16 +78,16 @@
             <h4>주문정보</h4>
             <ul>
               <li>
-                <p>주문 번호</p><span>: 60235</span>
+                <p>주문 번호</p><span>: <%=ov.getOrderNumber() %></span>
               </li>
               <li>
-                <p>주문 날짜</p><span>: 2017.07.11</span>
+                <p>주문 날짜</p><span>: <%=ov.getOrderDate() %></span>
               </li>
               <li>
-                <p>결제 금액</p><span>: 2210원</span>
+                <p>결제 금액</p><span>: <%=ov.getTotalPrice() %></span>
               </li>
               <li>
-                <p>결제 방법</p><span>: 계좌이체</span>
+                <p>결제 방법</p><span>: <%=ov.getPayMethod() %></span>
               </li>
             </ul>
           </div>
@@ -67,7 +97,7 @@
             <h4>shipping Address</h4>
             <ul>
               <li>
-                <p>주소</p><span>: 우리집</span>
+                <p>주소</p><span>: <%=ov.getAddress() %></span>
               </li>
             </ul>
           </div>
@@ -86,30 +116,35 @@
                 </tr>
               </thead>
               <tbody>
+              <%	for(OrderDetailVO vo : lvo){
+            	  ProductVO pvo=pdao.getProductWithId(vo.getProductId());
+              %>
                 <tr>
-                  <th colspan="2"><span>아이폰</span></th>
-                  <th>x02</th>
-                  <th> <span>720만원</span></th>
+                  <th colspan="2"><span><%=pvo.getProductName() %></span></th>
+                  <th><%=vo.getProductCount() %>개</th>
+                  <th> <span><%=vo.getProductPrice() %>원</span></th>
                 </tr>
+                   <%price +=(vo.getProductCount() * vo.getProductPrice());} %>
                   <th colspan="3">제품가격</th>
-                  <th> <span>2160만원</span></th>
+                  <th> <span><%=price %>원</span></th>
                 </tr>
                 <tr>
                   <th colspan="3">배송비</th>
                   <th><span>기본요금: 3000원</span></th>
                 </tr>
               </tbody>
+           
               <tfoot>
                 <tr>
                   <th scope="col" colspan="3">Total</th>
-                  <th scope="col">2100만원</th>
+                  <th scope="col"><%=ov.getTotalPrice() %></th>
                 </tr>
               </tfoot>
             </table>
           </div>
         </div>
       </div>
-      <a class="btn_3" id="s" href="">계속 쇼핑하기</a>
+      <a class="btn_3" id="s" href="/ShoppingMall/index.html">계속 쇼핑하기</a>
     </div>
   </section>
 	

@@ -1,16 +1,13 @@
 package servlet.customer;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import shopping.dao.CustomerDAO;
 import shopping.vo.CustomerVO;
@@ -31,12 +28,10 @@ public class CustomerLoginServlet extends HttpServlet {
 		// 2. DB에 id에 해당하는 member가 존재하는지 알아본다.
 		CustomerDAO customerdao = new CustomerDAO();
 		CustomerVO customer = customerdao.getCustomer(id);
-		
+
 		request.setAttribute("customer", customer);
 		RequestDispatcher rd = request.getRequestDispatcher("Form/CustomerForm/customerOneSearch.jsp");
 		rd.forward(request, response);
-		
-		
 
 	}
 

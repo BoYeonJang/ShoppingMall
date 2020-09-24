@@ -21,7 +21,7 @@ public class OrderDetailDAO {
 				conn =DBUtil.getConnection();
 			//4. 쿼리작성
 				ps=conn.prepareStatement(sql);
-				ps.setInt(1, orderDetail.getOrderNumber());
+				ps.setString(1, orderDetail.getUserId());
 				ps.setString(2, orderDetail.getProductId());
 				ps.setString(3,orderDetail.getProductOption());
 				ps.setInt(4, orderDetail.getProductCount());
@@ -54,7 +54,7 @@ public class OrderDetailDAO {
 		PreparedStatement ps = null;
 		boolean resultFlag = false;
 		String sql = "update orderDetail set productCount = ? , price = ?"
-				+ ",productOption=? where orderNumber=? ";
+				+ ",productOption=? where productId=? AND userId=? ";
 		
 		try {
 				conn = DBUtil.getConnection();
@@ -62,8 +62,30 @@ public class OrderDetailDAO {
 				ps.setInt(1, orderdetail.getProductCount());
 				ps.setInt(2, orderdetail.getPrice());
 				ps.setString(3,orderdetail.getProductOption());
-				ps.setInt(4, orderdetail.getOrderNumber());
+				ps.setString(4, orderdetail.getProductId());
+				ps.setString(5, orderdetail.getUserId());
 				
+				int count = ps.executeUpdate();
+				if(count == 1)
+					resultFlag = true;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			DBUtil.close(conn);
+		}
+		return resultFlag;
+	}
+	public boolean deleteOrderDetail(OrderDetailVO orderdetail)
+	{
+		Connection conn = null;
+		PreparedStatement ps = null;
+		boolean resultFlag = false;
+		String sql = "delete from orderDetail where productId = ? AND userId=?";
+		try {
+				conn = DBUtil.getConnection();
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, orderdetail.getProductId());
+				ps.setString(2, orderdetail.getUserId());
 				
 				int count = ps.executeUpdate();
 				if(count == 1)
@@ -76,18 +98,17 @@ public class OrderDetailDAO {
 		return resultFlag;
 	}
 	
-	
 	//삭제
-	public boolean deleteOrderDetail(OrderDetailVO orderdetail)
+	public boolean deleteOrderDetailAll(String userId)
 	{
 		Connection conn = null;
 		PreparedStatement ps = null;
 		boolean resultFlag = false;
-		String sql = "delete from orderDetail where orderNumber = ?";
+		String sql = "delete from orderDetail where userId=?";
 		try {
 				conn = DBUtil.getConnection();
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, orderdetail.getOrderNumber());
+				ps.setString(1, userId);
 				
 				int count = ps.executeUpdate();
 				if(count == 1)
@@ -102,21 +123,21 @@ public class OrderDetailDAO {
 	//조회
 
 	//orderDetail테이블에 있는 모든 정보 조회
-	public List<OrderDetailVO> getOrderDetailList(int orderNo){
+	public List<OrderDetailVO> getOrderDetailList(String userId){
 		List<OrderDetailVO> orderDetailList = new ArrayList<OrderDetailVO>();
 		Connection conn = null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
-		String sql = "select * from orders where orderNumber = ?";
+		String sql = "select * from orders where userId = ?";
 		try {
 			conn = DBUtil.getConnection();
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, orderNo);
+			ps.setString(1, userId);
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				OrderDetailVO orderdetail = new OrderDetailVO();
 				
-			    orderdetail.setOrderNumber(rs.getInt(1));
+			    orderdetail.setUserId(rs.getString(1));
 				orderdetail.setProductId(rs.getString(2));
 				orderdetail.setProductOption(rs.getString(3));
 				orderdetail.setProductCount(rs.getInt(4));

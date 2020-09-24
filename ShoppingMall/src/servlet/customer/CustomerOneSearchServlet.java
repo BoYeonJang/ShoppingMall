@@ -31,8 +31,8 @@ public class CustomerOneSearchServlet extends HttpServlet {
 				}
 			}
 		}
-		
-		String id = (String)request.getAttribute("id");
+
+		String id = (String) request.getAttribute("id");
 		if (loginFlag) {
 			CustomerDAO customerdao = new CustomerDAO();
 			CustomerVO customer = customerdao.getCustomer(id);

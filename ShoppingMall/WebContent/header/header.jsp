@@ -1,14 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <link rel="stylesheet" href="/ShoppingMall/css/header.css">
-
 <header>
 	<div class="nav">
 		<div class="topArea">
 			<div id="topQuick" class="layout_customer">
 				<ul>
 					<li><a href="/ShoppingMall/Form/CustomerForm/loginForm.jsp">로그인</a></li>
-					<li><a href="/ShoppingMall/Form/CustomerForm/inputForm.html">회원가입</a></li>
+					<li><a href="/ShoppingMall/Form/CustomerForm/inputForm.jsp">회원가입</a></li>
 					<li><a href="">마이페이지</a></li>
 					<li><a href="">장바구니</a></li>
 				</ul>

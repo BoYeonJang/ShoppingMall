@@ -20,7 +20,7 @@ public class CustomerDelServlet extends HttpServlet {
 		CustomerDAO dao = new CustomerDAO();
 		System.out.println(dao.deleteCustomer(id));
 
-		response.sendRedirect("index.html");
+		response.sendRedirect("index.jsp");
 	}
 
 }

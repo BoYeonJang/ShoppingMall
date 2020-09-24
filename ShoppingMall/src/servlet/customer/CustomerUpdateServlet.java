@@ -20,7 +20,7 @@ public class CustomerUpdateServlet extends HttpServlet {
 		CustomerVO customer = new CustomerVO();
 		customer.setId(request.getParameter("customerId"));
 		customer.setPassword(request.getParameter("customerPassword"));
-		customer.setName (request.getParameter("customerName"));
+		customer.setName(request.getParameter("customerName"));
 		customer.setGender(request.getParameter("customerGender"));
 		customer.setTel(request.getParameter("customerTel"));
 		customer.setAddress(request.getParameter("customerAddress"));

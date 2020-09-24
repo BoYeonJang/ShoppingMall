@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import shopping.dao.OrderDAO;
+import shopping.dao.OrderDetailDAO;
+import shopping.vo.OrderDetailVO;
 import shopping.vo.OrderVO;
 
 /**
@@ -31,7 +34,7 @@ public class OrderServlet extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 	
-		
+		OrderDetailDAO odao = new OrderDetailDAO();
 		OrderVO ov = new OrderVO();
 		OrderDAO dao = new OrderDAO();
 		//오늘 날짜 구하기
@@ -54,9 +57,12 @@ public class OrderServlet extends HttpServlet {
 		ov.setTotalPrice(price);
 		int orderNUmber = dao.getOrderNumber();
 		ov.setOrderNumber(orderNUmber);
-		
+		String msg="";
+		msg=request.getParameter("message");
+		ov.setMsg(msg);
 		dao.addOrder(ov);
-		
+		List<OrderDetailVO>lvo= odao.getOrderDetailList(userId);
+		odao.deleteOrderDetailAll(userId);
 		
 		
 		Cookie cookie = new Cookie(URLEncoder.encode("userId","utf-8"), userId);
@@ -72,10 +78,8 @@ public class OrderServlet extends HttpServlet {
 		//응답객체에 포함시킨다.
 		response.addCookie(cookie);
 		response.addCookie(cookie2);
-		if(method.equals("계좌이체"))
-			response.sendRedirect("orderAccComplete.jsp");
-		else if(method.equals("카카오페이"))
-			response.sendRedirect("orderKakaoComplete.jsp");
+		request.setAttribute("lvo", lvo);
+		response.sendRedirect("orderComplete.jsp");
 	}
 
 }

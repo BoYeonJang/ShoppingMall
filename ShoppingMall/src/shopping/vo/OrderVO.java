@@ -7,7 +7,7 @@ public class OrderVO {
 	private String orderDate;
 	private String address;
 	private String payMethod;
-	
+	private String msg;
 	
 	
 
@@ -101,6 +101,20 @@ public class OrderVO {
 	public String toString() {
 		return "주문번호 : "+orderNumber + "아이디  : "+userId + " 주문가격 : "+totalPrice+" 주문 날짜 : "+
 				orderDate + " 배송주소 : " + address +" 지불방법 : "+ payMethod;
+	}
+
+
+
+
+	public String getMsg() {
+		return msg;
+	}
+
+
+
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 }
