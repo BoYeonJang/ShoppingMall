@@ -2,23 +2,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>노팅힐</title>
-<style>
-/* 상단으로 가는 버튼 */
-.img_size {
-	width: 10%;
-	height: auto;
-	float: right;
-}
-
-div {
-	position: fixed;
-	bottom: 5px;
-	right: 5px;
-}
-</style>
+<title>Insert title here</title>
+<link rel="stylesheet" href="/ShoppingMall/css/header.css">
 </head>
 <body>
+	<ul style="float: right; list-style-type: none;">
+		<li><a href="Form/CustomerForm/loginForm.jsp">로그인</a></li>
+		<li><a href="Form/CustomerForm/inputForm.html">회원 가입</a></li>
+	</ul>
 	<hr>
 	<a href=index.html> <img class="main_image"
 		src="/ShoppingMall/images/main/main_image.png" alt="노팅힐"></a>
@@ -29,13 +20,6 @@ div {
 		<li><a href="NoticeBoardJacketListServlet">자켓 상품 목록</a></li>
 		<li><a href="NoticeBoardBottomListServlet">하의 상품 목록</a></li>
 		<li><a href="NoticeBoardShoesListServlet">신발 상품 목록</a></li>
-		<ul style="float: right; list-style-type: none;">
-			<li><a href="Form/CustomerForm/loginForm.jsp">로그인</a></li>
-			<li><a href="Form/CustomerForm/inputForm.html">회원 가입</a></li>
-		</ul>
 	</ul>
-	<div>
-		<a href="index.html"><img class="img_size" src="images/button/arrow.png"></a>
-	</div>
 </body>
 </html>
