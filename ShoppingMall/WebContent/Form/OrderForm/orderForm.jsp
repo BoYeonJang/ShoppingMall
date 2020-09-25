@@ -19,19 +19,6 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
   <!-- CSS here -->
-<<<<<<< HEAD
-      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-      <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-      <link rel="stylesheet" href="assets/css/flaticon.css">
-      <link rel="stylesheet" href="assets/css/slicknav.css">
-      <link rel="stylesheet" href="assets/css/animate.min.css">
-      <link rel="stylesheet" href="assets/css/magnific-popup.css">
-      <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-      <link rel="stylesheet" href="assets/css/themify-icons.css">
-      <link rel="stylesheet" href="assets/css/slick.css">
-      <link rel="stylesheet" href="assets/css/nice-select.css">
-      <link rel="stylesheet" href="assets/css/style.css">
-=======
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/bootstrap.min.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/owl.carousel.min.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/flaticon.css">
@@ -43,7 +30,6 @@
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/slick.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/nice-select.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/style.css">
->>>>>>> b4d8f6931b07d02db8959788223682a3c47e1a4c
 </head>
 
 <%
@@ -65,17 +51,10 @@
 	ProductDAO pdao = new ProductDAO();
 	ProductVO pvo=new ProductVO();
 	
-<<<<<<< HEAD
-	if(pid!="")
-		pvo = pdao.getProductWithId(pid);
-	
-	CustomerDAO cdao = new CustomerDAO();
-	CustomerVO customer = cdao.getCustomer(customerId);
-=======
 	if(dvo.getProductId()!=null)
 		pvo = pdao.getProductWithId(dvo.getProductId());
->>>>>>> b4d8f6931b07d02db8959788223682a3c47e1a4c
 %>
+
 
 <body>
 

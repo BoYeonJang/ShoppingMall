@@ -23,7 +23,7 @@
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/owl.carousel.min.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/flaticon.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/slicknav.css">
-      <link rel="stylesheet" href="./Form/OrderForm/assets/css/animate.min.css">
+      <link rel="st"WebContent/Form/ProductForm"ylesheet" href="./Form/OrderForm/assets/css/animate.min.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/magnific-popup.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/fontawesome-all.min.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/themify-icons.css">
