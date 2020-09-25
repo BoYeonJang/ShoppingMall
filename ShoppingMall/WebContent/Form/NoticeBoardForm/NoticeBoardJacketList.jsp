@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>자켓 리스트 페이지 입니다</title>
 <link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 </head>
 <body>

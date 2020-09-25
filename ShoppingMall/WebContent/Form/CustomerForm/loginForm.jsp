@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
+<link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 <link rel="stylesheet" href="/ShoppingMall/css/login.css">
 </head>
 <body>
@@ -15,8 +16,9 @@
 			<form class="login_form" action="/ShoppingMall/StartShoppingServlet"
 				method="post">
 				<input class="id_button" type="text" placeholder="아이디" name="id"><br>
-				<input class="password_button" type="password" placeholder="비밀번호" name="password"><br>
-				<input class="login_button" type="submit" value="로그인">
+				<input class="password_button" type="password" placeholder="비밀번호"
+					name="password"><br> <input class="login_button"
+					type="submit" value="로그인">
 			</form>
 			<form class="register_form"
 				action="/ShoppingMall/Form/CustomerForm/inputForm.jsp" method="post">

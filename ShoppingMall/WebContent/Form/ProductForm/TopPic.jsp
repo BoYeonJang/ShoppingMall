@@ -1,15 +1,18 @@
 <%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@page import="shopping.vo.ProductVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Product Details</title>
+<title>상의 세부 내용 페이지 입니다</title>
+
 <link rel="stylesheet" href="/ShoppingMall/css/margin.css">
+
 </head>
 <body>
+
 
 <%@ include file="/header/header.jsp"%>
 <div class="table">
@@ -18,7 +21,9 @@
 	
 %>
 
-	<img src="/ShoppingMall/images/상의/<%=product.getProductPicId()%>.png" alt="위의 이미지를 누르면 연결됩니다.">
+		<img src="/ShoppingMall/images/상의/<%=product.getProductPicId()%>.png"
+			alt="위의 이미지를 누르면 연결됩니다.">
+
 
 	<form action ="orderDetail">  
 	<%=product.getProductName()%><br>
@@ -33,5 +38,6 @@
 		<input type="submit" name="submit"value="장바구니에 담기"><br>
 	</form>
 </div>
+
 </body>
 </html>

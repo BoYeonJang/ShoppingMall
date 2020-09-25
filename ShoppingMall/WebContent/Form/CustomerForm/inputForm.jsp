@@ -6,20 +6,24 @@
 <meta charset="UTF-8">
 <title>가입 정보 입력</title>
 <link rel="stylesheet" href="/ShoppingMall/css/margin.css">
+<link rel="stylesheet" href="/ShoppingMall/css/input.css">
 </head>
 <body>
 	<%@ include file="/header/header.jsp"%>
-	<h1>가입 정보 입력</h1>
-	<form action="/ShoppingMall/addCustomer" method="post">
-		<label>아이디: </label> <input type="text" name="customerId"><br>
-		<label>비밀번호: </label> <input type="text" name="customerPassword"><br>
-		<label>이름: </label> <input type="text" name="customerName"><br>
-		<label>성별: </label> <input type="text" name="customerGender"><br>
-		<label>전화번호: </label> <input type="text" name="customerTel"><br>
-		<label>주소: </label> <input type="text" name="customerAddress"><br>
-		<label>이메일: </label> <input type="text" name="customerEmail"><br>
-		<input type="reset" value="다시 쓰기"> <input type="submit"
-			value="회원 가입 완료">
-	</form>
+	<div class="login_page">
+		<div class="form">
+			<h3>회원 가입</h3>
+			<form class="input_form" action="/ShoppingMall/addCustomer"
+				method="post">
+				<input class="button" type="text" placeholder="아이디" name="customerId"><br>
+				<input class="button" type="password" placeholder="비밀번호" name="customerPassword"><br>
+				<input class="button" type="text" placeholder="이름" name="customerName"><br>
+				<input class="button" type="text" placeholder="성별" name="customerGender"><br>
+				<input class="button" type="text" placeholder="전화번호" name="customerTel"><br>
+				<input class="button" type="text" placeholder="주소" name="customerAddress"><br>
+				<input class="button" type="text" placeholder="이메일" name="customerEmail"><br>
+				<input class="register_button" type="submit" value="회원가입">
+			</form>
+		</div>
+	</div>
 </body>
-</html>

@@ -6,10 +6,10 @@ header {
 	top: 0;
 	left: 0;
 	right: 0;
-	background: white;
+	/* background: white; */
 }
 
-.nav{
+.nav {
 	margin-bottom: 45px;
 }
 
@@ -56,9 +56,3 @@ ul li {
 .layout_customer ul li {
 	margin-left: 10px;
 }
-
-/* body, code {
-	font: 11px 'Open Sans', 'Nanum Gothic', arial, Dotum, sans-serif;
-	color: #353535;
-	background: #fff;
-} */
