@@ -1,5 +1,5 @@
-<%@page import="shopping.dao.CustomerDAO"%>
 <%@page import="shopping.vo.CustomerVO"%>
+<%@page import="shopping.dao.CustomerDAO"%>
 <%@page import="shopping.vo.OrderDetailVO"%>
 <%@page import="java.util.List"%>
 <%@page import="shopping.dao.OrderDetailDAO"%>
@@ -19,6 +19,7 @@
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
   <!-- CSS here -->
+<<<<<<< HEAD
       <link rel="stylesheet" href="assets/css/bootstrap.min.css">
       <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
       <link rel="stylesheet" href="assets/css/flaticon.css">
@@ -30,35 +31,50 @@
       <link rel="stylesheet" href="assets/css/slick.css">
       <link rel="stylesheet" href="assets/css/nice-select.css">
       <link rel="stylesheet" href="assets/css/style.css">
+=======
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/bootstrap.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/flaticon.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/slicknav.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/animate.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/magnific-popup.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/fontawesome-all.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/themify-icons.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/slick.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/nice-select.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/style.css">
+>>>>>>> b4d8f6931b07d02db8959788223682a3c47e1a4c
 </head>
+
 <%
-	String pid="";
-	pid=request.getParameter("productId");
-	String count="";
-	count=request.getParameter("count");
-	String size="";
-	size=request.getParameter("size");
-	String customerId="";
-	customerId = request.getParameter("customerId");
+	String userId=(String)request.getAttribute("userId");
+	OrderDetailVO dvo=(OrderDetailVO)request.getAttribute("detail");
+	
 	boolean dir=true;
 	int price=0;
 	int sprice=0;
 	
-	String userId="";
-	userId=request.getParameter("userId");
+	CustomerDAO cdao= new CustomerDAO();
+	CustomerVO cvo = new CustomerVO();
 	
+	cvo= cdao.getCustomer(userId);
 	OrderDetailDAO dao = new OrderDetailDAO();
 	List<OrderDetailVO> vo =dao.getOrderDetailList(userId);
-	if(vo==null)
+	if(vo.size()==0)
 		dir = false;
 	ProductDAO pdao = new ProductDAO();
 	ProductVO pvo=new ProductVO();
 	
+<<<<<<< HEAD
 	if(pid!="")
 		pvo = pdao.getProductWithId(pid);
 	
 	CustomerDAO cdao = new CustomerDAO();
 	CustomerVO customer = cdao.getCustomer(customerId);
+=======
+	if(dvo.getProductId()!=null)
+		pvo = pdao.getProductWithId(dvo.getProductId());
+>>>>>>> b4d8f6931b07d02db8959788223682a3c47e1a4c
 %>
 
 <body>
@@ -76,18 +92,18 @@
            <!--   <form class="row contact_form" action="#" method="post" novalidate="novalidate">-->
               <div class="col-md-6 form-group p_star">
               <span class="billing_details">이름</span>
-                 <input type="text" class="form-control" id="first" name="name" value="<%=customer.getName()%>"/>
+                 <input type="text" class="form-control" id="first" name="name" value="<%=cvo.getName() %>" />
                 
               </div>
               <div class="col-md-6 form-group p_star">
                 <span class="billing_details">핸드폰 번호</span>
-                <input type="text" class="form-control" id="number" value="<%=customer.getTel()%>"  />
+                <input type="text" class="form-control" id="number"  value="<%=cvo.getTel() %>" />
                 
               </div>
             
               <div class="col-md-12 form-group p_star">
                 <span class="billing_details">주소</span>
-                <input type="text" class="form-control" id="add1" name="add" value="<%=customer.getAddress()%>" />
+                <input type="text" class="form-control" id="add1" name="add" value="<%=cvo.getAddress() %>" />
                 
               </div>
               
@@ -110,10 +126,11 @@
                     <span>Total</span>
                   </a>
                 </li>
-                <%
+                <%    		  
                 	if(dir)
                 	{
-                		for(OrderDetailVO s : vo){	
+                		for(OrderDetailVO s : vo){
+                			System.out.println(s);
                 		pvo=pdao.getProductWithId(s.getProductId());
                 	 %>
                 <li>
@@ -128,17 +145,17 @@
                 		} price=sprice; }else{ %>
                 <li>
                   <a href="#"><%=pvo.getProductName() %>
-                    <span class="middle"><%=count %></span>
+                    <span class="middle"><%=dvo.getProductCount() %></span>
                     <span class="last"><%=pvo.getProductPrice() %></span>
                   </a>
                 </li>
-                <% price+=(Integer.parseInt(count) * pvo.getProductPrice());
+                <% price+=(dvo.getProductCount() * pvo.getProductPrice());
                 } %>
               </ul>
               <ul class="list list_2">
                 <li>
                   <a href="#">제품가격
-                   <span><%=pvo.getProductPrice() %>원</span>
+                   <span><%=price %>원</span>
                   </a>
                 </li>
                 <li>
@@ -148,7 +165,7 @@
                 </li>
                 <li>
                   <a href="#">결제 금액
-                    <span><%=pvo.getProductPrice() + 3000 %>원</span>
+                    <span><%=price + 3000 %>원</span>
                   </a>
                 </li>
               </ul>

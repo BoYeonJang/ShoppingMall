@@ -128,7 +128,7 @@ public class OrderDetailDAO {
 		Connection conn = null;
 		PreparedStatement ps =null;
 		ResultSet rs = null;
-		String sql = "select * from orders where userId = ?";
+		String sql = "select * from orderDetail where userId = ?";
 		try {
 			conn = DBUtil.getConnection();
 			ps = conn.prepareStatement(sql);

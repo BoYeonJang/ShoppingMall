@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -79,7 +80,8 @@ public class OrderServlet extends HttpServlet {
 		response.addCookie(cookie);
 		response.addCookie(cookie2);
 		request.setAttribute("lvo", lvo);
-		response.sendRedirect("orderComplete.jsp");
+		RequestDispatcher rd = request.getRequestDispatcher("orderComplete.jsp");
+		rd.forward(request, response);
 	}
 
 }

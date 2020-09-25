@@ -1,6 +1,8 @@
 package servlet.order;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +29,8 @@ public class orderDetailServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		String userId=request.getParameter("userId");
+		String submit=request.getParameter("submit");
+		String userId=request.getParameter("customerId");
 		String pid=request.getParameter("productId");
 		String count=request.getParameter("count");
 		String size=request.getParameter("size");
@@ -45,12 +48,24 @@ public class orderDetailServlet extends HttpServlet {
 		vo.setProductOption(size);
 		vo.setProductPrice(pvo.getProductPrice());
 		vo.setPrice(price);
+		vo.setUserId(userId);
 		
 		dao.addOrderDetail(vo);
 		
 		request.setAttribute("userId", userId);
 		request.setAttribute("detail", vo);
-		response.sendRedirect("orderDetailForm.jsp");
+		if(submit.equals("장바구니에 담기"))
+		{
+			RequestDispatcher rd = request.getRequestDispatcher("Form/OrderForm/orderDetailForm.jsp");
+			rd.forward(request, response);
+		}
+		else if(submit.equals("구매하기"))
+		{
+			RequestDispatcher rd = request.getRequestDispatcher("Form/OrderForm/orderForm.jsp");
+			rd.forward(request, response);
+		}
+			
+		
 	}
 
 }

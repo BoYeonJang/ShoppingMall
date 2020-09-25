@@ -1,6 +1,8 @@
 package servlet.order;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,7 +32,10 @@ public class orderDetailDeleteServlet extends HttpServlet {
 		vo.setProductId(productId);
 		vo.setUserId(userId);
 		dao.deleteOrderDetail(vo);
-		response.sendRedirect("orderDetailForm.jsp");
+		
+		request.setAttribute("detail", vo);
+		RequestDispatcher rd = request.getRequestDispatcher("Form/OrderForm/orderDetailForm.jsp");
+		rd.forward(request, response);
 	}
 
 }
