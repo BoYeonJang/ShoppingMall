@@ -30,7 +30,6 @@
       <link rel="stylesheet" href="assets/css/slick.css">
       <link rel="stylesheet" href="assets/css/nice-select.css">
       <link rel="stylesheet" href="assets/css/style.css">
-      
 </head>
 <%
 	String pid="";
@@ -60,10 +59,10 @@
 	
 	CustomerDAO cdao = new CustomerDAO();
 	CustomerVO customer = cdao.getCustomer(customerId);
-	
 %>
 
 <body>
+
 		<!--================Checkout Area =================-->
   <section class="checkout_area section_padding">
     <div class="container">
