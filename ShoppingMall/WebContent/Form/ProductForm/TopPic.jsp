@@ -16,7 +16,7 @@
 		<div class="table">
 			<%
 				ProductVO product = (ProductVO) request.getAttribute("product");
-			String userId = (String) session.getAttribute("customerId");
+				String userId = (String) session.getAttribute("customerId");
 			%>
 			<div class="product_image">
 				<img
@@ -24,7 +24,7 @@
 					alt="위의 이미지를 누르면 연결됩니다.">
 			</div>
 			<div class="product_info">
-				<form action="orderDetail">
+				<form action="orderDetailServlet">
 					<div class="product_name">
 						<%=product.getProductName()%><br>
 					</div>
