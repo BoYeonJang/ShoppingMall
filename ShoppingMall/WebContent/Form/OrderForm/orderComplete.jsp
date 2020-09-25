@@ -167,7 +167,7 @@
           </div>
         </div>
       </div>
-      <a class="btn_3" id="s" href="/ShoppingMall/index.html">계속 쇼핑하기</a>
+      <a class="btn_3" id="s" href="/ShoppingMall/index.jsp">계속 쇼핑하기</a>
     </div>
   </section>
 	

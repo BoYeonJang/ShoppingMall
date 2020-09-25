@@ -55,7 +55,7 @@
 						class="update_button" type="submit" value="회원정보수정"></a></td>
 			</tr>
 			<tr>
-				<td><a href="deleteCustomer?customerId=<%=customer.getId()%>"><input
+				<td><a href="deleteCustomer?customerId=<%=customer.getId()%>&"><input
 						class="delete_button" type="submit" value="회원탈퇴"></a></td>
 			</tr>
 		</table>

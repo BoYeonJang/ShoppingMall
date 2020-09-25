@@ -11,12 +11,14 @@
 <body>
 	<%
 		CustomerVO customer = (CustomerVO) request.getAttribute("customerInfo");
+	
+		
 	%>
 	<%@ include file="/header/header.jsp"%>
 	<div class="update_page">
 		<h3>회원정보수정</h3>
 		<div class="member_info_size">
-			<form class="update_form" action="/ShoppingMall/updateCustomer" method="post">
+			<form class="update_form" action="updateCustomer" method="post">
 				<table>
 					<tr>
 						<td class="member">아이디</td>
@@ -54,16 +56,16 @@
 							value="<%=customer.getEmail()%>" name="customerEmail"></td>
 					</tr>
 				</table>
-			</form>
+			
 		</div>
 		<table>
 			<tr>
-				<td><a
-					href="CustomerUpdateFormServlet?customerId=<%=customer.getId()%>">
+				<td>
 						<input class="update_button" type="submit" value="회원정보수정하기">
-				</a></td>
+				</td>
 			</tr>
 		</table>
+		</form>
 	</div>
 </body>
 </html>

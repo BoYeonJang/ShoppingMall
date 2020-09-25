@@ -151,7 +151,8 @@ public class CustomerDAO {
 
 		try {
 			conn = DBUtil.getConnection();
-
+			
+			
 			ps = conn.prepareStatement(sql);
 			ps.setString(7, customer.getId());
 			ps.setString(1, customer.getPassword());
