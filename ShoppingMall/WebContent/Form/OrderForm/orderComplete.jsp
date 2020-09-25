@@ -67,7 +67,7 @@
 	}
 	OrderDAO dao = new OrderDAO();
 	OrderVO ov = dao.getOrder(orderNumber);
-	
+	System.out.println(ov.getOrderNumber());
 	ProductDAO pdao= new ProductDAO();
 	List<OrderDetailVO> lvo =new ArrayList<OrderDetailVO>();
 	

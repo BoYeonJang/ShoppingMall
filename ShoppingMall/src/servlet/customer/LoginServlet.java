@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
 //				rd.forward(request, response);
 				
 				HttpSession session= request.getSession();
-				session.setAttribute("customer", customer);
+				session.setAttribute("customerId", customer.getId());
 				response.sendRedirect("/ShoppingMall/StartShoppingServlet");
 				
 			}else {

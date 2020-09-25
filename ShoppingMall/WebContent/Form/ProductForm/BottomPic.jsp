@@ -1,25 +1,17 @@
 <%@page import="java.nio.channels.SeekableByteChannel"%>
 <%@page import="shopping.vo.ProductVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
-   pageEncoding="UTF-8"%>
-=======
 	pageEncoding="UTF-8"%>
->>>>>>> 404e68c679f2a3acb96678dc851b18cbcba36c78
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<<<<<<< HEAD
 <title>노팅힐-하의 세부 페이지</title>
-=======
-<title>노팅힐-상의</title>
->>>>>>> 404e68c679f2a3acb96678dc851b18cbcba36c78
 <link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 <link rel="stylesheet" href="/ShoppingMall/css/product_layout.css">
 </head>
 <body>
-<<<<<<< HEAD
+
    <%@ include file="/header/header.jsp"%>
    <div class="product_layout">
       <div class="table">
@@ -33,7 +25,7 @@
                alt="위의 이미지를 누르면 연결됩니다.">
          </div>
          <div class="product_info">
-            <form action="orderDetailServlet">
+            <form action="orderDetail">
                <div class="product_name">
                   <%=product.getProductName()%><br>
                </div>
@@ -68,55 +60,6 @@
          </div>
       </div>
    </div>
-=======
-	<%@ include file="/header/header.jsp"%>
-	<div class="product_layout">
-		<div class="table">
-			<%
-				ProductVO product = (ProductVO) request.getAttribute("product");
-			String userId = (String) session.getAttribute("customerId");
-			%>
-			<div class="product_image">
-				<img
-					src="/ShoppingMall/images/하의/<%=product.getProductPicId()%>.png"
-					alt="위의 이미지를 누르면 연결됩니다.">
-			</div>
-			<div class="product_info">
-				<form action="orderDetailServlet">
-					<div class="product_name">
-						<%=product.getProductName()%><br>
-					</div>
-					<hr>
-					<div class="price">
-						판매가:
-						<%=product.getProductPrice()%><br>
-					</div>
-					<hr>
-					<div class="number">
-						개수: <input type="text" name="count">
-					</div>
-					<div class="size">
-						사이즈: <input type="text" value=<%=product.getProductSize()%>
-							name="size">
-					</div>
-					<!-- 상품id값. 구매할 사람이 볼필요가 없기 때문에 hidden로 숨김 -->
-					<input type="hidden" name="productId"
-						value=<%=product.getProductId()%>>
-					<!-- 고객id값. 구매할 사람이 볼필요가 없기 때문에 hidden로 숨김 -->
-					<input type="hidden" name="customerId" value=<%=userId%>>
-					<hr>
-					<div class="buy_button">
-						<input class="buy_button_input" type="submit" name="submit"
-							value="구매하기">
-					</div>
-					<div class="cart_button">
-						<input class="cart_button_input" type="submit" name="submit"
-							value="장바구니에 담기">
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
->>>>>>> 404e68c679f2a3acb96678dc851b18cbcba36c78
+
 </body>
 </html>
