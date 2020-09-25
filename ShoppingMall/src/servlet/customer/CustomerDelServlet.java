@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import shopping.dao.CustomerDAO;
 
@@ -19,6 +20,9 @@ public class CustomerDelServlet extends HttpServlet {
 		String id = request.getParameter("customerId");
 		CustomerDAO dao = new CustomerDAO();
 		System.out.println(dao.deleteCustomer(id));
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute("customerId");
 
 		response.sendRedirect("index.jsp");
 	}
