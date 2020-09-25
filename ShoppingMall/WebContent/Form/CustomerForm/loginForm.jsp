@@ -5,7 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
-<link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 <link rel="stylesheet" href="/ShoppingMall/css/login.css">
 </head>
 <body>

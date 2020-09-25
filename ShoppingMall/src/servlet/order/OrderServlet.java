@@ -23,7 +23,7 @@ import shopping.vo.OrderVO;
 /**
  * Servlet implementation class OrderServlet
  */
-@WebServlet("/Form/OrderForm/order")
+@WebServlet("/order")
 public class OrderServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,16 @@ public class OrderServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-	
+		String cnt="";
+		String pprice="";
+		String pname="";
+		
+		cnt=request.getParameter("cnt");
+		pprice=request.getParameter("pprice");
+		pname=request.getParameter("pname");
+		
+		System.out.println(cnt);
+		
 		OrderDetailDAO odao = new OrderDetailDAO();
 		OrderVO ov = new OrderVO();
 		OrderDAO dao = new OrderDAO();
@@ -51,6 +60,8 @@ public class OrderServlet extends HttpServlet {
         
         String userId=request.getParameter("userId");
         String method = request.getParameter("method");
+        
+        System.out.println(method);
 		ov.setUserId(userId);
 		ov.setAddress(request.getParameter("add"));
 		ov.setOrderDate(today);
@@ -76,11 +87,15 @@ public class OrderServlet extends HttpServlet {
 		//cookie.setMaxAge(60*60*24*365);
 		cookie.setMaxAge(-1); //브라우저가 유지되는 동안
 		
+		request.setAttribute("cnt", cnt);
+		request.setAttribute("pprice", pprice);
+		request.setAttribute("pname", pname);
 		//응답객체에 포함시킨다.
 		response.addCookie(cookie);
 		response.addCookie(cookie2);
-		request.setAttribute("lvo", lvo);
-		RequestDispatcher rd = request.getRequestDispatcher("orderComplete.jsp");
+		if(lvo!=null)
+			request.setAttribute("lvo", lvo);
+		RequestDispatcher rd = request.getRequestDispatcher("Form/OrderForm/orderComplete.jsp");
 		rd.forward(request, response);
 	}
 

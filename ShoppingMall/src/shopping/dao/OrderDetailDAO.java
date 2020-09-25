@@ -140,7 +140,9 @@ public class OrderDetailDAO {
 			    orderdetail.setUserId(rs.getString(1));
 				orderdetail.setProductId(rs.getString(2));
 				orderdetail.setProductOption(rs.getString(3));
-				orderdetail.setProductCount(rs.getInt(4));
+				Object o= rs.getObject(4);
+				int a = (int)o;
+				orderdetail.setProductCount(a);
 				orderdetail.setProductPrice(rs.getInt(5));
 				orderdetail.setPrice(rs.getInt(6));
 				orderDetailList.add(orderdetail);
@@ -152,5 +154,6 @@ public class OrderDetailDAO {
 		}
 		return orderDetailList;
 	}
+
 
 }

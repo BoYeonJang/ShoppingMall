@@ -4,8 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>가입 정보 입력</title>
-<link rel="stylesheet" href="/ShoppingMall/css/margin.css">
+<title>회원 가입</title>
 <link rel="stylesheet" href="/ShoppingMall/css/input.css">
 </head>
 <body>

@@ -147,7 +147,7 @@ public class ProductDAO {
 				product.setProductPrice(rs.getInt(3));
 				product.setProductSize(rs.getString(4));
 				product.setProductPicId(rs.getInt("productPicId"));
-				product.setProductType(rs.getString(6));
+				product.setProductType(rs.getString(5));
 			}
 
 		} catch (Exception e) {

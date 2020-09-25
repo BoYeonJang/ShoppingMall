@@ -1,52 +1,57 @@
 @charset "UTF-8";
 
-.login_page {
+.my_page {
 	position: absolute;
-	top: 50%; /* 위에서부터 50% */
+	top: 40%; /* 위에서부터 40% */
 	left: 47%; /* 왼쪽에서부터 47% */
 	border: solid 1px #ecf0f1; /* 테두리 */
-	width: 23rem; /* 가로 줄 */
-	height: 18rem; /* 세로 줄 */
+	width: 21.7rem; /* 가로 줄 */
+	height: 33.5rem; /* 세로 줄 */
 	margin-left: -150px;
 	margin-top: -80px;
 	text-align: center; /* 가운데 정렬 */
 }
 
-.id_button {
-	background: #ecf0f1;
-	width: 21rem;
-	height: 3rem;
-	font-size: 0.75rem;
+.member_info_size {
+	margin: 1%; /* input값 사이 간격 */
 }
 
-.password_button {
+.member {
 	background: #ecf0f1;
-	width: 21rem;
+	width: 5rem;
 	height: 3rem;
 	font-size: 0.75rem;
+	text-align: right;
+	padding: 0 0.5rem 0 0;
 }
 
-.login_button {
+.info {
+	background: #ecf0f1;
+	width: 15rem;
+	height: 3rem;
+	font-size: 0.75rem;
+	text-align: left;
+	padding: 0 0 0 0.7rem;
+}
+
+.update_button {
 	background: #bdc3c7;
 	width: 21rem;
 	height: 3rem;
 	font-size: 0.75rem;
-}
-
-.register_button {
-	background: #bdc3c7;
-	width: 21rem;
-	height: 3rem;
-	font-size: 0.75rem;
-}
-
-.form input {
 	box-sizing: border-box;
 	border: 0; /* 테두리 삭제 */
-	margin: 1%; /* input값 사이 간격 */
 	padding: 0.3rem; /* 박스 크기 */
+	margin: 1%; /* input값 사이 간격 */
 }
 
-input:focus {
-	outline: 2px solid #7f8c8d;
+.delete_button {
+	background: #bdc3c7;
+	width: 21rem;
+	height: 3rem;
+	font-size: 0.75rem;
+	box-sizing: border-box;
+	border: 0; /* 테두리 삭제 */
+	padding: 0.3rem; /* 박스 크기 */
+	margin: 1%; /* input값 사이 간격 */
 }

@@ -5,30 +5,67 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>정보 수정</title>
+<title>회원정보수정</title>
+<link rel="stylesheet" href="/ShoppingMall/css/update.css">
 </head>
 <body>
 	<%
 		CustomerVO customer = (CustomerVO) request.getAttribute("customerInfo");
+	
+		
 	%>
 	<%@ include file="/header/header.jsp"%>
-	<h1>정보 수정</h1>
-	<form action="/ShoppingMall/updateCustomer">
-		<label>아이디: </label> <input type="text" name="customerId"
-			value="<%=customer.getId()%>" readonly="readonly"><br> <label>비밀번호:
-		</label> <input type="text" name="customerPassword"
-			value="<%=customer.getPassword()%>"><br> <label>이름:
-		</label> <input type="text" name="customerName"
-			value="<%=customer.getName()%>"><br> <label>성별:
-		</label> <input type="text" name="customerGender"
-			value="<%=customer.getGender()%>"><br> <label>전화번호:
-		</label> <input type="text" name="customerTel" value="<%=customer.getTel()%>"><br>
-		<label>주소: </label> <input type="text" name="customerAddress"
-			value="<%=customer.getAddress()%>"><br> <label>이메일:
-		</label> <input type="text" name="customerEmail"
-			value="<%=customer.getEmail()%>"><br> <input
-			type="reset" value="다시 쓰기"> <input type="submit"
-			value="정보 수정">
-	</form>
+	<div class="update_page">
+		<h3>회원정보수정</h3>
+		<div class="member_info_size">
+			<form class="update_form" action="updateCustomer" method="post">
+				<table>
+					<tr>
+						<td class="member">아이디</td>
+						<td class="info"><input class="info_button" type="text"
+							value="<%=customer.getId()%>" name="customerId" readonly></td>
+					</tr>
+					<tr>
+						<td class="member">비밀번호</td>
+						<td class="info"><input class="info_button" type="text"
+							value="<%=customer.getPassword()%>" name="customerPassword"></td>
+					</tr>
+					<tr>
+						<td class="member">이름</td>
+						<td class="info"><input class="info_button" type="text"
+							value="<%=customer.getName()%>" name="customerName"></td>
+					</tr>
+					<tr>
+						<td class="member">성별</td>
+						<td class="info"><input class="info_button" type="text"
+							value="<%=customer.getGender()%>" name="customerGender"></td>
+					</tr>
+					<tr>
+						<td class="member">전화번호</td>
+						<td class="info"><input class="info_button" type="text"
+							value="<%=customer.getTel()%>" name="customerTel"></td>
+					</tr>
+					<tr>
+						<td class="member">주소</td>
+						<td class="info"><input class="info_button" type="text"
+							value="<%=customer.getAddress()%>" name="customerAddress"></td>
+					</tr>
+					<tr>
+						<td class="member">이메일</td>
+						<td class="info"><input class="info_button" type="text"
+							value="<%=customer.getEmail()%>" name="customerEmail"></td>
+					</tr>
+				</table>
+			
+		</div>
+		<table>
+			<tr>
+				<td>
+						<input class="update_button" type="submit" value="회원정보수정하기">
+				</td>
+			</tr>
+		</table>
+		</form>
+	</div>
 </body>
 </html>
