@@ -20,12 +20,6 @@ public class StartShoppingServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		//String customerId = request.getParameter("customerId");
 		
-		String customerId = request.getParameter("id");
-		String password = request.getParameter("password");
-		
-		HttpSession session= request.getSession();
-		session.setAttribute("customerId", customerId);
-		
 		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");  
 		// forwarding 할 때는 파일 위치만 찾는거니까 자신의 위치에서부터 찾는것
 		// redirect 할 때는 전체 url 링크로 보내줘야 하니까 절대경로로부터 

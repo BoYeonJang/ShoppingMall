@@ -55,9 +55,7 @@
 		pvo = pdao.getProductWithId(dvo.getProductId());
 %>
 
-
 <body>
-
 		<!--================Checkout Area =================-->
   <section class="checkout_area section_padding">
     <div class="container">
