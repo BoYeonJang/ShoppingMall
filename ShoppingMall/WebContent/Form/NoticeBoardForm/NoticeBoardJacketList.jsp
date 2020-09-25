@@ -8,41 +8,37 @@
 <meta charset="UTF-8">
 <title>노팅힐-자켓</title>
 <link rel="stylesheet" href="/ShoppingMall/css/margin.css">
+<link rel="stylesheet" href="/ShoppingMall/css/site_layout.css">
 </head>
 <body>
 	<%
 		List<NoticeBoardVO> noticeBoardJacketList = (List<NoticeBoardVO>) request.getAttribute("noticeBoardJacketList");
 	%>
 	<%@ include file="/header/header.jsp"%>
-	<table>
-		<thead>
-			<tr>
-				<td>Pic</td>
-				<td>No.</td>
-				<td>Title</td>
-				<td>Content</td>
-			</tr>
-		</thead>
-		<%
-			for (NoticeBoardVO notice : noticeBoardJacketList) {
-		%>
-		<tbody>
-			<tr>
-				<td><a
-					href="JacketPicServlet?noticeTitle=<%=notice.getNoticeTitle()%>">
-						<img
-						src="/ShoppingMall/images/자켓/<%=notice.getNoticePicId()%>.png"
-						alt="위의 이미지를 누르면 연결됩니다.">
-				</a></td>
-				<td><%=notice.getNoticeNo()%></td>
-				<td><%=notice.getNoticeTitle()%></td>
-				<td><%=notice.getNoticeCont()%></td>
+	<div class="site_layout">
+		<div class="image_layout">
+			<table>
+				<%
+					for (NoticeBoardVO notice : noticeBoardJacketList) {
+				%>
+				<tr>
+					<td><a
+						href="JacketPicServlet?noticeTitle=<%=notice.getNoticeTitle()%>">
+							<img
+							src="/ShoppingMall/images/자켓/<%=notice.getNoticePicId()%>.png"
+							alt="위의 이미지를 누르면 연결됩니다.">
+					</a></td>
+				<tr>
+					<td><%=notice.getNoticeTitle()%></td>
+				</tr>
+				<tr>
+					<td><%=notice.getNoticeCont()%></td>
+				</tr>
 				<%
 					}
 				%>
-			
-		</tbody>
-	</table>
-
+			</table>
+		</div>
+	</div>
 </body>
 </html>
