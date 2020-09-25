@@ -30,11 +30,16 @@
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/slick.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/nice-select.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/style.css">
+      
+      
+      
 </head>
 
 <%
-	String userId=(String)request.getAttribute("userId");
-	OrderDetailVO dvo=(OrderDetailVO)request.getAttribute("detail");
+	String userId="";
+	userId=(String)request.getAttribute("userId");
+	OrderDetailVO dvo= new OrderDetailVO();
+	dvo=(OrderDetailVO)request.getAttribute("detail");
 	
 	boolean dir=true;
 	int price=0;
@@ -46,6 +51,8 @@
 	cvo= cdao.getCustomer(userId);
 	OrderDetailDAO dao = new OrderDetailDAO();
 	List<OrderDetailVO> vo =dao.getOrderDetailList(userId);
+	if(dvo.getProductId()!=null)
+		vo.add(dvo);
 	if(vo.size()==0)
 		dir = false;
 	ProductDAO pdao = new ProductDAO();
@@ -53,9 +60,12 @@
 	
 	if(dvo.getProductId()!=null)
 		pvo = pdao.getProductWithId(dvo.getProductId());
+
 %>
 
 <body>
+
+
 		<!--================Checkout Area =================-->
   <section class="checkout_area section_padding">
     <div class="container">
@@ -106,9 +116,11 @@
                 <%    		  
                 	if(dir)
                 	{
+                		System.out.println("vo사이즈="+vo.size());
                 		for(OrderDetailVO s : vo){
-                			System.out.println(s);
+                			System.out.println("s아이디="+s.getProductId());
                 		pvo=pdao.getProductWithId(s.getProductId());
+                		System.out.println("product이름="+pvo.getProductName());
                 	 %>
                 <li>
                   <a href="#"><%=pvo.getProductName() %>
@@ -121,9 +133,9 @@
               	sprice+=(pvo.getProductPrice() * s.getProductCount());
                 		} price=sprice; }else{ %>
                 <li>
-                  <a href="#"><%=pvo.getProductName() %>
-                    <span class="middle"><%=dvo.getProductCount() %></span>
-                    <span class="last"><%=pvo.getProductPrice() %></span>
+                  <a href="#" ><%=pvo.getProductName() %>
+                    <span class="middle" ><%=dvo.getProductCount() %></span>
+                    <span class="last" ><%=pvo.getProductPrice() %></span>
                   </a>
                 </li>
                 <% price+=(dvo.getProductCount() * pvo.getProductPrice());
@@ -148,7 +160,7 @@
               </ul>
               <div class="payment_item">
                 <div class="radion_btn">
-                  <input type="radio" id="f-option5" name="method" />
+                  <input type="radio" id="f-option5" name="method" value="계좌이체" />
                   <label for="f-option5">계좌이체</label>
                   <div class="check"></div>
                 </div>
@@ -158,7 +170,7 @@
               </div>
               <div class="payment_item active">
                 <div class="radion_btn">
-                  <input type="radio" id="f-option6" name="method" />
+                  <input type="radio" id="f-option6" name="method"  value="카카오페이"/>
                   <label for="f-option6">카카오페이 </label>
                   <img src="img/product/single-product/card.jpg" alt="" />
                   <div class="check"></div>
@@ -172,6 +184,9 @@
                 <label for="f-option4">I’ve read and accept the </label>
                 <a href="#">terms & conditions*</a>
               </div>
+              <input type="hidden" name="cnt" value="<%=dvo.getProductCount()%>">
+              <input type="hidden" name="pname" value="<%=pvo.getProductName()%>">
+              <input type="hidden" name="pprice" value="<%=pvo.getProductPrice()%>">
              <input type="hidden" name="userId" value="<%=userId%>">
              <input type="hidden" name="price" value="<%=price+3000%>">
              	<input type="submit" class="btn_3" value="결제하기">
@@ -186,6 +201,7 @@
         
       </div>
       </form>
+      
     </div>
     
   </section>

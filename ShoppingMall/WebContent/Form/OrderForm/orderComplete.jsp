@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="shopping.dao.ProductDAO"%>
 <%@page import="shopping.vo.ProductVO"%>
 <%@page import="java.util.List"%>
@@ -19,17 +20,17 @@
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
 
 <!-- CSS here -->
-      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-      <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-      <link rel="stylesheet" href="assets/css/flaticon.css">
-      <link rel="stylesheet" href="assets/css/slicknav.css">
-      <link rel="stylesheet" href="assets/css/animate.min.css">
-      <link rel="stylesheet" href="assets/css/magnific-popup.css">
-      <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
-      <link rel="stylesheet" href="assets/css/themify-icons.css">
-      <link rel="stylesheet" href="assets/css/slick.css">
-      <link rel="stylesheet" href="assets/css/nice-select.css">
-      <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/bootstrap.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/owl.carousel.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/flaticon.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/slicknav.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/animate.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/magnific-popup.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/fontawesome-all.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/themify-icons.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/slick.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/nice-select.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/style.css">
 </head>
 <style>
 #s{
@@ -42,6 +43,14 @@
 	Cookie[] cookies =request.getCookies();
 	String userId="";
 	int orderNumber=0;
+	
+	String cnt="";
+	String pprice="";
+	String pname="";
+	
+	cnt=(String)request.getAttribute("cnt");
+	pprice=(String)request.getAttribute("pprice");
+	pname=(String)request.getAttribute("pname");
 	if(cookies != null)
 	{
 		for(Cookie cookie : cookies)
@@ -60,8 +69,10 @@
 	OrderVO ov = dao.getOrder(orderNumber);
 	
 	ProductDAO pdao= new ProductDAO();
-	List<OrderDetailVO> lvo =(List<OrderDetailVO>)request.getAttribute("lvo");
+	List<OrderDetailVO> lvo =new ArrayList<OrderDetailVO>();
 	
+	if(request.getAttribute("lvo")!=null)
+		lvo=(List<OrderDetailVO>)request.getAttribute("lvo");
 	int price=0;
 %>
 <body>
@@ -116,7 +127,10 @@
                 </tr>
               </thead>
               <tbody>
-              <%	for(OrderDetailVO vo : lvo){
+              <% System.out.println("111"+lvo.size());
+              System.out.println("pname"+pname);
+              if(lvo.size()!=0)	{
+              	for(OrderDetailVO vo : lvo){
             	  ProductVO pvo=pdao.getProductWithId(vo.getProductId());
               %>
                 <tr>
@@ -124,7 +138,16 @@
                   <th><%=vo.getProductCount() %>개</th>
                   <th> <span><%=vo.getProductPrice() %>원</span></th>
                 </tr>
-                   <%price +=(vo.getProductCount() * vo.getProductPrice());} %>
+                   <%price +=(vo.getProductCount() * vo.getProductPrice());} 
+              }else
+              {
+           %>
+            <tr>
+                  <th colspan="2"><span><%=pname %></span></th>
+                  <th><%=cnt %>개</th>
+                  <th> <span><%=pprice %>원</span></th>
+                </tr>
+                <% price=Integer.parseInt(cnt) * Integer.parseInt(pprice);} %>
                   <th colspan="3">제품가격</th>
                   <th> <span><%=price %>원</span></th>
                 </tr>

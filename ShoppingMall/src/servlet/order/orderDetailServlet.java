@@ -1,6 +1,7 @@
 package servlet.order;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -50,12 +51,37 @@ public class orderDetailServlet extends HttpServlet {
 		vo.setPrice(price);
 		vo.setUserId(userId);
 		
-		dao.addOrderDetail(vo);
 		
 		request.setAttribute("userId", userId);
 		request.setAttribute("detail", vo);
+		
+		
+		List<OrderDetailVO> lvo= dao.getOrderDetailList(userId);
+		Boolean check=false;
 		if(submit.equals("장바구니에 담기"))
 		{
+			for(OrderDetailVO a:lvo)
+			{
+				check=true;
+				if(a.getProductId().equals(pid) && a.getProductOption().equals(size))
+				{
+					
+					check=false;
+					vo.setPrice((a.getProductCount()+1)*a.getProductPrice());
+					vo.setProductCount(a.getProductCount()+1);
+					dao.updateOrderDetail(vo);
+					break;
+				}
+			}
+			
+			if(check)
+			{
+				
+				dao.addOrderDetail(vo);
+			}
+				
+			
+			
 			RequestDispatcher rd = request.getRequestDispatcher("Form/OrderForm/orderDetailForm.jsp");
 			rd.forward(request, response);
 		}

@@ -23,7 +23,7 @@
 					<li><a href="/ShoppingMall/Form/CustomerForm/inputForm.jsp">회원가입</a></li>
 					<li><a
 						href="/ShoppingMall/Form/CustomerForm/customerOneSearch.jsp">마이페이지</a></li>
-					<li><a href="">장바구니</a></li>
+					<li><a href="HeaderToDetail?userId=<%=customerId%>">장바구니</a></li>
 				</ul>
 			</div>
 		</div>
