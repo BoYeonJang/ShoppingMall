@@ -6,49 +6,59 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>조회</title>
+<title>마이페이지</title>
+<link rel="stylesheet" href="/ShoppingMall/css/search.css">
 </head>
 <body>
 	<%
 		CustomerVO customer = (CustomerVO) request.getAttribute("customer");
 	%>
 	<%@ include file="/header/header.jsp"%>
-	<h1>회원 목록</h1>
-	<table>
-		<thead>
+	<div class="my_page">
+		<h3>마이페이지</h3>
+		<div class="member_info_size">
+			<table>
+				<tr>
+					<td class="member">아이디</td>
+					<td class="info"><%=customer.getId()%></td>
+				</tr>
+				<tr>
+					<td class="member">비밀번호</td>
+					<td class="info"><%=customer.getPassword()%></td>
+				</tr>
+				<tr>
+					<td class="member">이름</td>
+					<td class="info"><%=customer.getName()%></td>
+				</tr>
+				<tr>
+					<td class="member">성별</td>
+					<td class="info"><%=customer.getGender()%></td>
+				</tr>
+				<tr>
+					<td class="member">전화번호</td>
+					<td class="info"><%=customer.getTel()%></td>
+				</tr>
+				<tr>
+					<td class="member">주소</td>
+					<td class="info"><%=customer.getAddress()%></td>
+				</tr>
+				<tr>
+					<td class="member">이메일</td>
+					<td class="info"><%=customer.getEmail()%></td>
+				</tr>
+			</table>
+		</div>
+		<table>
 			<tr>
-				<th>아이디</th>
-				<th>비밀번호</th>
-				<th>이름</th>
-				<th>성별</th>
-				<th>전화번호</th>
-				<th>주소</th>
-				<th>이메일</th>
-				<th>수정</th>
-				<th>삭제</th>
+				<td><a
+					href="CustomerUpdateFormServlet?customerId=<%=customer.getId()%>"><input
+						class="update_button" type="submit" value="회원정보수정"></a></td>
 			</tr>
-		</thead>
-		<tbody>
 			<tr>
-				<td><%=customer.getId()%></td>
-				<td><%=customer.getPassword()%></td>
-				<td><%=customer.getName()%></td>
-				<td><%=customer.getGender()%></td>
-				<td><%=customer.getTel()%></td>
-				<td><%=customer.getAddress()%></td>
-				<td><%=customer.getEmail()%></td>
-				<td><a
-					href="CustomerUpdateFormServlet?customerId=<%=customer.getId()%>">수정</a></td>
-				<td><a href="deleteCustomer?customerId=<%=customer.getId()%>">삭제</a></td>
-				<td><a
-					href="StartShoppingServlet?customerId=<%=customer.getId()%>">쇼핑
-						시작하기</a></td>
-
-				<td><a
-					href="updateFormCustomer?customerId=<%=customer.getId()%>">수정</a></td>
-				<td><a href="deleteCustomer?customerId=<%=customer.getId()%>">삭제</a></td>
+				<td><a href="deleteCustomer?customerId=<%=customer.getId()%>"><input
+						class="delete_button" type="submit" value="회원탈퇴"></a></td>
 			</tr>
-		</tbody>
-	</table>
+		</table>
+	</div>
 </body>
 </html>
