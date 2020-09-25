@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>하의 세부 내용 페이지 입니다</title>
+<title>노팅힐-하의</title>
 
 <link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 </head>

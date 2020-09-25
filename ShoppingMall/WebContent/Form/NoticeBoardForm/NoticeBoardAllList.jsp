@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>AllProductList</title>
+<title>노팅힐-전체</title>
 <link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 </head>
 <body>

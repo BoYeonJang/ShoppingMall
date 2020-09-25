@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>신발 리스트 페이지 입니다</title>
+<title>노팅힐-신발</title>
 <link rel="stylesheet" href="/ShoppingMall/css/margin.css">
 </head>
 <body>

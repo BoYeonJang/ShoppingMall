@@ -16,7 +16,7 @@ public class OrderDAO {
 		Connection conn = null;
 		PreparedStatement ps = null;
 		boolean resultFlag = false;
-		String sql = "insert into orders values (?,?,?,?,?,?)";	
+		String sql = "insert into orders values (?,?,?,?,?,?,?)";	
 		try {
 			//3. 접속
 				conn =DBUtil.getConnection();
@@ -28,7 +28,7 @@ public class OrderDAO {
 				ps.setString(4, order.getOrderDate());
 				ps.setString(5, order.getAddress());
 				ps.setString(6, order.getPayMethod());
-				
+				ps.setString(7, order.getMsg());
 				
 			//5. 실행
 				int count = ps.executeUpdate();
@@ -118,7 +118,7 @@ public class OrderDAO {
 				order.setOrderDate(rs.getString(4));
 				order.setAddress(rs.getString(5));
 				order.setPayMethod(rs.getString(6));
-				
+				order.setMsg(rs.getString(7));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

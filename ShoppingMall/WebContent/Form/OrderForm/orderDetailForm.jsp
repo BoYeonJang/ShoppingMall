@@ -1,3 +1,4 @@
+
 <%@page import="shopping.vo.OrderDetailVO"%>
 <%@page import="shopping.vo.OrderVO"%>
 <%@page import="java.util.List"%>
@@ -23,7 +24,7 @@
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/owl.carousel.min.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/flaticon.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/slicknav.css">
-      <link rel="st"WebContent/Form/ProductForm"ylesheet" href="./Form/OrderForm/assets/css/animate.min.css">
+      <link rel="stylesheet" href="./Form/OrderForm/assets/css/animate.min.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/magnific-popup.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/fontawesome-all.min.css">
       <link rel="stylesheet" href="./Form/OrderForm/assets/css/themify-icons.css">
@@ -34,17 +35,22 @@
 <%
 	OrderDetailVO vo = new OrderDetailVO();		
 	vo=(OrderDetailVO)request.getAttribute("detail");
-	String userId=vo.getUserId();
+	String userId="";
+	if(vo.getUserId()!=null)
+		userId=vo.getUserId();
+	else{
+		userId=(String)request.getAttribute("userId");
+	}
 	
 	OrderDetailDAO dao = new OrderDetailDAO();
 	List<OrderDetailVO> lvo = dao.getOrderDetailList(userId);
-	if(vo!=null)
-		lvo.add(vo);
+	//if(vo!=null && lvo.size()==1)
+		//lvo.add(vo);
 	ProductDAO pdao = new ProductDAO();
-	
+
 %>
 <body>
-	<form action= "orderForm.jsp" >
+	<form action= "orderUpdate" >
     <section class="cart_area section_padding">
     <div class="container">
       <div class="cart_inner">
@@ -59,17 +65,20 @@
               </tr>
             </thead>
             <tbody>
-            <%for(OrderDetailVO ovo : lvo){
+            <% 
+            for(OrderDetailVO ovo : lvo){
             	ProductVO pvo = pdao.getProductWithId(ovo.getProductId());
             	%>
               <tr>
                 <td>
                   <div class="media">
                     <div class="d-flex">
-                      <img src="/ShoppingMall/images/<%=pvo.getProductType() %>/<%=pvo.getProductPicId() %>" alt="" />
+                      
                     </div>
-                    <div class="media-body">
+                    <img src="/ShoppingMall/images/<%=pvo.getProductType() %>/<%=pvo.getProductPicId()%>.png">
+                      
                       <p ><%=pvo.getProductName() %></p>
+                      <p ><%=ovo.getProductOption() %></p>
                       <span class="btn_1" onclick="location.href='delOrderDetail?uid=<%=userId%>&pid=<%=ovo.getProductId()%>'">삭제</span>
                       </div>
                   </div>
@@ -90,7 +99,7 @@
                       <i class="ti-angle-down"></i>
                     </button> -->
                     <span class="input-number-decrement"> <i class="ti-minus"></i></span>
-                    <input class="input-number" type="text" id="count" name="count" value="1" min="0" max="10">
+                    <input class="input-number" type="text" id="count" name="count" value="<%=ovo.getProductCount() %>" min="0" max="10">
                     <span class="input-number-increment"> <i class="ti-plus" ></i></span>
                   </div>
                 </td>
@@ -103,7 +112,8 @@
             </tbody>
           </table>
           <div class="checkout_btn_inner float-right">
-          	<a class="btn_1" href="/ShoppingMall/index.html">쇼핑 계속하기</a>
+          	<a class="btn_1" href="/ShoppingMall/index.jsp">쇼핑 계속하기</a>
+          	<input type="hidden" value=<%=userId %> name="userId">
           	<input type="submit" value="결제하기" class ="btn_1">
           </div>
         </div>
@@ -116,40 +126,41 @@
  <!-- JS here -->
 
     <!-- All JS Custom Plugins Link Here here -->
-    <script src="./assets/js/vendor/modernizr-3.5.0.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/vendor/modernizr-3.5.0.min.js"></script>
     
     <!-- Jquery, Popper, Bootstrap -->
-    <script src="./assets/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="./assets/js/popper.min.js"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/vendor/jquery-1.12.4.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/popper.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/bootstrap.min.js"></script>
     <!-- Jquery Mobile Menu -->
-    <script src="./assets/js/jquery.slicknav.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/jquery.slicknav.min.js"></script>
 
     <!-- Jquery Slick , Owl-Carousel Plugins -->
-    <script src="./assets/js/owl.carousel.min.js"></script>
-    <script src="./assets/js/slick.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/owl.carousel.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/slick.min.js"></script>
 
     <!-- One Page, Animated-HeadLin -->
-    <script src="./assets/js/wow.min.js"></script>
-    <script src="./assets/js/animated.headline.js"></script>
+    <script src="./Form/OrderForm/assets/js/wow.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/animated.headline.js"></script>
     
     <!-- Scrollup, nice-select, sticky -->
-    <script src="./assets/js/jquery.scrollUp.min.js"></script>
-    <script src="./assets/js/jquery.nice-select.min.js"></script>
-    <script src="./assets/js/jquery.sticky.js"></script>
-    <script src="./assets/js/jquery.magnific-popup.js"></script>
+    <script src="./Form/OrderForm/assets/js/jquery.scrollUp.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/jquery.nice-select.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/jquery.sticky.js"></script>
+    <script src="./Form/OrderForm/assets/js/jquery.magnific-popup.js"></script>
 
     <!-- contact js -->
-    <script src="./assets/js/contact.js"></script>
-    <script src="./assets/js/jquery.form.js"></script>
-    <script src="./assets/js/jquery.validate.min.js"></script>
-    <script src="./assets/js/mail-script.js"></script>
-    <script src="./assets/js/jquery.ajaxchimp.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/contact.js"></script>
+    <script src="./Form/OrderForm/assets/js/jquery.form.js"></script>
+    <script src="./Form/OrderForm/assets/js/jquery.validate.min.js"></script>
+    <script src="./Form/OrderForm/assets/js/mail-script.js"></script>
+    <script src="./Form/OrderForm/assets/js/jquery.ajaxchimp.min.js"></script>
     
     <!-- Jquery Plugins, main Jquery -->	
-    <script src="./assets/js/plugins.js"></script>
-    <script src="./assets/js/main.js"></script>
+    <script src="./Form/OrderForm/assets/js/plugins.js"></script>
+    <script src="./Form/OrderForm/assets/js/main.js"></script>
     
           
 </body>
+
 </html>
