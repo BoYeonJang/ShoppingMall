@@ -14,37 +14,25 @@ import javax.servlet.http.HttpServletResponse;
 import shopping.dao.CustomerDAO;
 import shopping.vo.CustomerVO;
 
-@WebServlet("/customerOneSearch")
+@WebServlet("/CustomerOneSearch")
 public class CustomerOneSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void service(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		boolean loginFlag = false;
-		Cookie[] cookies = request.getCookies();
-		if (cookies != null) {
-			for (Cookie cookie : cookies) {
-				if ("loginFlag".equals(cookie.getName())) {
-					loginFlag = true;
-					break;
-				}
-			}
-		}
 
-		String id = (String) request.getAttribute("id");
-		if (loginFlag) {
+		String id = (String) request.getParameter("customerId");
+		System.out.println(id);
+		
 			CustomerDAO customerdao = new CustomerDAO();
 			CustomerVO customer = customerdao.getCustomer(id);
 
-			request.setAttribute("customerOneSearch", customer);
+			request.setAttribute("customer", customer);
+			//System.out.println(customer);
 
 			RequestDispatcher rd = request.getRequestDispatcher("Form/CustomerForm/customerOneSearch.jsp");
 			rd.forward(request, response);
-		} else {
-			// 로그인하지 않은 사용자 일 때
-			RequestDispatcher rd = request.getRequestDispatcher("Form/CustomerForm/error.jsp");
-			rd.forward(request, response);
-		}
+		
 	}
 }

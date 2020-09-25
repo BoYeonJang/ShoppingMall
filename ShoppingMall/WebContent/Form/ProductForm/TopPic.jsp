@@ -15,6 +15,7 @@
 
 
 <%@ include file="/header/header.jsp"%>
+
 <div class="table">
 <% ProductVO product = (ProductVO) request.getAttribute("product");
 	String userId=(String)session.getAttribute("customerId");
