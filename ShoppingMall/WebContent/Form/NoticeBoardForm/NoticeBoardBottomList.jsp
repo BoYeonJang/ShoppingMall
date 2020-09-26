@@ -13,8 +13,7 @@
 </head>
 <body>
 	<%
-		ArrayList<NoticeBoardVO> noticeBoardBottomList = (ArrayList<NoticeBoardVO>) request
-			.getAttribute("noticeBoardBottomList");
+		ArrayList<NoticeBoardVO> noticeBoardBottomList = (ArrayList<NoticeBoardVO>) request.getAttribute("noticeBoardBottomList");
 	%>
 	<%@ include file="/header/header.jsp"%>
 	<div class="site_layout">
