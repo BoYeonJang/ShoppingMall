@@ -1,5 +1,10 @@
 @charset "UTF-8";
 
+.margin {
+	margin: 30rem;
+	display: block;
+}
+
 .login_page {
 	position: absolute;
 	top: 40%; /* 위에서부터 50% */

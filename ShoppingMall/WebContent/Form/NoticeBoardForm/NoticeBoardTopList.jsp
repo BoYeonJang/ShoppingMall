@@ -24,7 +24,7 @@
 						for (int i = 0; i < noticeBoardTopList.size(); i++) {
 					%>
 					<td><a
-						href="BottomPicServlet?noticeTitle=<%=noticeBoardTopList.get(i).getNoticeTitle()%>">
+						href="TopPicServlet?noticeTitle=<%=noticeBoardTopList.get(i).getNoticeTitle()%>">
 							<img
 							src="/ShoppingMall/images/상의/<%=noticeBoardTopList.get(i).getNoticePicId()%>.png"
 							alt="위의 이미지를 누르면 연결됩니다.">
