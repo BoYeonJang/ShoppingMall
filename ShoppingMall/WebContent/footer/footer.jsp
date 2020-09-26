@@ -6,7 +6,6 @@
 		<div class="top">
 			<ul>
 				<li><a href="/ShoppingMall/index.jsp">홈</a></li>
-				<li><a href="">팀원소개</a></li>
 				<li><a href="https://github.com/BoYeonJang/ShoppingMall/">깃주소</a></li>
 				<li><a href="#">상단으로</a></li>
 			</ul>
