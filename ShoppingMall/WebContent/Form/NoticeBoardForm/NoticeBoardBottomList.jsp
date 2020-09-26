@@ -1,3 +1,4 @@
+<%@page import="java.util.ArrayList"%>
 <%@page import="shopping.vo.NoticeBoardVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -12,31 +13,37 @@
 </head>
 <body>
 	<%
-		List<NoticeBoardVO> noticeBoardBottomList = (List<NoticeBoardVO>) request.getAttribute("noticeBoardBottomList");
+		ArrayList<NoticeBoardVO> noticeBoardBottomList = (ArrayList<NoticeBoardVO>) request
+			.getAttribute("noticeBoardBottomList");
 	%>
 	<%@ include file="/header/header.jsp"%>
 	<div class="site_layout">
 		<div class="image_layout">
 			<table>
-				<%
-					for (NoticeBoardVO notice : noticeBoardBottomList) {
-				%>
 				<tr>
+					<%
+						for (int i = 0; i < noticeBoardBottomList.size(); i++) {
+					%>
 					<td><a
-						href="BottomPicServlet?noticeTitle=<%=notice.getNoticeTitle()%>">
+						href="BottomPicServlet?noticeTitle=<%=noticeBoardBottomList.get(i).getNoticeTitle()%>">
 							<img
-							src="/ShoppingMall/images/하의/<%=notice.getNoticePicId()%>.png"
+							src="/ShoppingMall/images/하의/<%=noticeBoardBottomList.get(i).getNoticePicId()%>.png"
 							alt="위의 이미지를 누르면 연결됩니다.">
 					</a></td>
-				<tr>
-					<td><%=notice.getNoticeTitle()%></td>
+					<%
+						}
+					%>
 				</tr>
 				<tr>
-					<td><%=notice.getNoticeCont()%></td>
+					<%
+						for (int i = 0; i < noticeBoardBottomList.size(); i++) {
+					%>
+					<td><%=noticeBoardBottomList.get(i).getNoticeTitle()%><br>
+						<%=noticeBoardBottomList.get(i).getNoticeCont()%></td>
+					<%
+						}
+					%>
 				</tr>
-				<%
-					}
-				%>
 			</table>
 		</div>
 	</div>

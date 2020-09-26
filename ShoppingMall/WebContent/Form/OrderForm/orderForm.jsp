@@ -160,16 +160,15 @@ if (dvo.getProductId() != null)
 				<div class="payment_item active">
 					<div class="radion_btn">
 						<input type="radio" id="f-option6" name="method" value="카카오페이" />
-						<label for="f-option6">카카오페이 </label> <img
+						<label for="f-option6">무통장입금</label> <img
 							src="img/product/single-product/card.jpg" alt="" />
 						<div class="check"></div>
 					</div>
-					<p>관리자에게 문의</p>
+					<p>장보연 우리은행 1002-256-007985</p>
 				</div>
 				<div class="creat_account">
 					<input type="checkbox" id="f-option4" name="selector" /> <label
-						for="f-option4">I’ve read and accept the </label> <a href="#">terms
-						& conditions*</a>
+						for="f-option4">당신의 개인정보 감사합니다.</label>
 				</div>
 				<input type="hidden" name="cnt" value="<%=dvo.getProductCount()%>">
 				<input type="hidden" name="pname" value="<%=pvo.getProductName()%>">
