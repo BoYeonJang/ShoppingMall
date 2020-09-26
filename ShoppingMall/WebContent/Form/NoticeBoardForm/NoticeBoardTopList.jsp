@@ -45,5 +45,6 @@
 			</table>
 		</div>
 	</div>
+	<%@ include file="/footer/footer.jsp"%>
 </body>
 </html>
