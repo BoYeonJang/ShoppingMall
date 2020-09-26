@@ -19,8 +19,7 @@
 					name="password"><br> <input class="login_button"
 					type="submit" value="로그인">
 			</form>
-			<form class="register_form"
-				action="/ShoppingMall/Form/CustomerForm/inputForm.jsp" method="post">
+			<form class="register_form" action="/ShoppingMall/Form/CustomerForm/inputForm.jsp" method="post">
 				<input class="register_button" type="submit" value="회원가입하기">
 			</form>
 		</div>

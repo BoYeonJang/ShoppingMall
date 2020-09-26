@@ -17,33 +17,58 @@
 	%>
 	<%@ include file="/header/header.jsp"%>
 	<table>
-		<thead>
-			<tr>
-				<td>No.</td>
-				<td>Title</td>
-				<td>Content</td>
-			</tr>
-		</thead>
-		<%
-			for (NoticeBoardVO notice : noticeBoardAllList) {
-			String category = notice.getNoticeCategory();
-			ProductDAO dao = new ProductDAO();
-			ProductVO product = dao.getProductWithType(category);
-		%>
 		<tbody>
 			<tr>
-				<td><img
-					src="/ShoppingMall/images/<%=product.getProductType()%>/<%=notice.getNoticePicId()%>.png"
-					alt="위의 이미지를 누르면 연결됩니다."></td>
-				<td><%=notice.getNoticeNo()%></td>
-				<td><%=notice.getNoticeTitle()%></td>
-				<td><%=notice.getNoticeCont()%></td>
 				<%
-					}
+					int count = 0;
+				for (int i = 0; i < noticeBoardAllList.size(); i++) {
+					String category = noticeBoardAllList.get(i).getNoticeCategory();
+					ProductDAO dao = new ProductDAO();
+					ProductVO product = dao.getProductWithType(category);
 				%>
-			
+				<td><img
+					src="/ShoppingMall/images/<%=product.getProductType()%>/<%=noticeBoardAllList.get(i).getNoticePicId()%>.png"
+					alt="위의 이미지를 누르면 연결됩니다."> <%
+ 	count++;
+ if (count % 4 == 0) {
+ %>
+			<tr>
+			</tr>
+			<%
+				count = 0;
+			}
+			}
+			%>
+			</td>
+			</tr>
+
+			<tr>
+				<%
+					int count2 = 0;
+				for (int i = 0; i < noticeBoardAllList.size(); i++) {
+					String category = noticeBoardAllList.get(i).getNoticeCategory();
+					ProductDAO dao = new ProductDAO();
+					ProductVO product = dao.getProductWithType(category);
+				%>
+				<td><%=noticeBoardAllList.get(i).getNoticeNo()%><br> <%=noticeBoardAllList.get(i).getNoticeTitle()%><br>
+					<%=noticeBoardAllList.get(i).getNoticeCont()%> <%
+ 	count2++;
+
+ if (count2 % 4 == 0) {
+ %>
+			<tr>
+			</tr>
+			<%
+				count2 = 0;
+			}
+			}
+			%>
+
+			</td>
+			</tr>
+			<br>
 		</tbody>
 	</table>
-
+	<%@ include file="/footer/footer.jsp"%>
 </body>
 </html>

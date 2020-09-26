@@ -13,7 +13,7 @@
 		</div>
 		<br>
 		<div class="copyright">
-			<p>위 상품 이미지는 laurenhi에서 가져왔습니다.</p>
+			<p>위 상품 이미지는 <a href="https://laurenhi.com/">laurenhi</a>에서 가져왔습니다.</p>
 		</div>
 	</div>
 </footer>

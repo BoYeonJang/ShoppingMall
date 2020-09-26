@@ -1,0 +1,35 @@
+@charset "UTF-8";
+
+.error {
+	position: absolute;
+	top: 34%;
+	left: 37%;
+	border: solid 1px #ecf0f1; /* 테두리 */
+	width: 23rem; /* 가로 줄 */
+	height: 10rem; /* 세로 줄 */
+}
+
+.login_error {
+	text-align: center;
+}
+
+.form input {
+	box-sizing: border-box;
+	border: 0;
+	margin: 1%;
+	padding: 0.3rem;
+}
+
+.error_button {
+	outline: 0;
+	margin-top: 1rem;
+	background: #bdc3c7;
+	width: 21rem;
+	height: 3rem;
+	font-size: 0.75rem;
+	margin-top: 1rem;
+}
+
+input:focus {
+	outline: 2px solid #7f8c8d;
+}
