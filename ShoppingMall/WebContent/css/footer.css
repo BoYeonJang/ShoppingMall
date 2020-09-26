@@ -1,6 +1,35 @@
 @charset "UTF-8";
 
 .box {
-	margin-top: 10px;
-	margin-left: 30px;
+	width: auto;
+	height: 10rem;
+	background: #ecf0f1;
+	text-align: center;
+	background: #ecf0f1;
+}
+
+.top {
+	margin-left: 23rem;
+}
+
+.top ul li {
+	margin-top: 2rem;
+	margin-left: 5.5rem;
+}
+
+/* 공통 */
+ul li {
+	list-style-type: none; /* 앞에 점 없애기 */
+	float: left; /* 세로로 되어있는 것을 가로로 */
+	text-align: center;
+}
+
+a {
+	text-align: center;
+	color: #7f8c8d;
+}
+
+.copyright {
+	margin-top: 5rem;
+	color: #7f8c8d;
 }
