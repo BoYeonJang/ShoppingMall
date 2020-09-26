@@ -22,9 +22,9 @@
 			<table>
 				<%
 					for (NoticeBoardVO notice : noticeBoardAllList) {
-					String category = notice.getNoticeCategory();
-					ProductDAO dao = new ProductDAO();
-					ProductVO product = dao.getProductWithType(category);
+						String category = notice.getNoticeCategory();
+						ProductDAO dao = new ProductDAO();
+						ProductVO product = dao.getProductWithType(category);
 				%>
 				<tr>
 					<td><img

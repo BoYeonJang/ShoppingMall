@@ -9,5 +9,6 @@
 <body>
 	<%@ include file="header/header.jsp"%>
 	<% response.sendRedirect("/ShoppingMall/NoticeBoardAllListServlet"); %>
+	<%@ include file="footer/footer.jsp"%>
 </body>
 </html>
