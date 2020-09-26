@@ -10,40 +10,38 @@
 <meta charset="UTF-8">
 <title>노팅힐-전체</title>
 <link rel="stylesheet" href="/ShoppingMall/css/margin.css">
+<link rel="stylesheet" href="/ShoppingMall/css/site_layout.css">
 </head>
 <body>
 	<%
 		List<NoticeBoardVO> noticeBoardAllList = (List<NoticeBoardVO>) request.getAttribute("noticeBoardAllList");
 	%>
 	<%@ include file="/header/header.jsp"%>
-	<table>
-		<thead>
-			<tr>
-				<td>No.</td>
-				<td>Title</td>
-				<td>Content</td>
-			</tr>
-		</thead>
-		<%
-			for (NoticeBoardVO notice : noticeBoardAllList) {
-			String category = notice.getNoticeCategory();
-			ProductDAO dao = new ProductDAO();
-			ProductVO product = dao.getProductWithType(category);
-		%>
-		<tbody>
-			<tr>
-				<td><img
-					src="/ShoppingMall/images/<%=product.getProductType()%>/<%=notice.getNoticePicId()%>.png"
-					alt="위의 이미지를 누르면 연결됩니다."></td>
-				<td><%=notice.getNoticeNo()%></td>
-				<td><%=notice.getNoticeTitle()%></td>
-				<td><%=notice.getNoticeCont()%></td>
+	<div class="site_layout">
+		<div class="image_layout">
+			<table>
+				<%
+					for (NoticeBoardVO notice : noticeBoardAllList) {
+					String category = notice.getNoticeCategory();
+					ProductDAO dao = new ProductDAO();
+					ProductVO product = dao.getProductWithType(category);
+				%>
+				<tr>
+					<td><img
+						src="/ShoppingMall/images/<%=product.getProductType()%>/<%=notice.getNoticePicId()%>.png"
+						alt="위의 이미지를 누르면 연결됩니다."></td>
+				</tr>
+				<tr>
+					<td><%=notice.getNoticeTitle()%></td>
+				</tr>
+				<tr>
+					<td><%=notice.getNoticeCont()%></td>
+				</tr>
 				<%
 					}
 				%>
-			
-		</tbody>
-	</table>
-
+			</table>
+		</div>
+	</div>
 </body>
 </html>
