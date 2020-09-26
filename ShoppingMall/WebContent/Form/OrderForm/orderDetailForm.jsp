@@ -96,9 +96,9 @@
                       class="reduced input-number-decrement items-count" type="button">	
                       <i class="ti-angle-down"></i>	
                     </button> -->	
-                    <span class="input-number-decrement"> <i class="ti-minus"></i></span>	
+                   <!-- <span class="input-number-decrement"> <i class="ti-minus"></i></span>	-->
                     <input class="input-number" type="text" id="count" name="count" value="<%=ovo.getProductCount() %>" min="0" max="10">	
-                    <span class="input-number-increment"> <i class="ti-plus" ></i></span>	
+                   <!--   <span class="input-number-increment"> <i class="ti-plus" ></i></span>	-->
                   </div>	
                 </td>	
                 <td>	

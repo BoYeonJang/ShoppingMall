@@ -77,22 +77,15 @@ public class OrderServlet extends HttpServlet {
 		odao.deleteOrderDetailAll(userId);
 		
 		
-		Cookie cookie = new Cookie(URLEncoder.encode("userId","utf-8"), userId);
-		cookie.setPath("/");
-		//cookie.setMaxAge(60*60*24*365);
-		cookie.setMaxAge(-1); //브라우저가 유지되는 동안
 		
-		Cookie cookie2 = new Cookie(URLEncoder.encode("orderNumber","utf-8"), Integer.toString(orderNUmber));
-		cookie.setPath("/");
-		//cookie.setMaxAge(60*60*24*365);
-		cookie.setMaxAge(-1); //브라우저가 유지되는 동안
+		request.setAttribute("orderNumber", orderNUmber);
+		request.setAttribute("userId", userId);
+		
 		
 		request.setAttribute("cnt", cnt);
 		request.setAttribute("pprice", pprice);
 		request.setAttribute("pname", pname);
 		//응답객체에 포함시킨다.
-		response.addCookie(cookie);
-		response.addCookie(cookie2);
 		if(lvo!=null)
 			request.setAttribute("lvo", lvo);
 		RequestDispatcher rd = request.getRequestDispatcher("Form/OrderForm/orderComplete.jsp");

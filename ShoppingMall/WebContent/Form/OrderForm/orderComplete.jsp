@@ -51,23 +51,14 @@
 	cnt=(String)request.getAttribute("cnt");
 	pprice=(String)request.getAttribute("pprice");
 	pname=(String)request.getAttribute("pname");
-	if(cookies != null)
-	{
-		for(Cookie cookie : cookies)
-		{
-			String id=URLDecoder.decode(cookie.getName(),"utf-8");
-			if(id.equals("userId"))
-				{
-					userId = cookie.getValue();
-				}else if(id.equals("orderNumber"))
-				{
-					orderNumber=Integer.parseInt(cookie.getValue());
-				}
-		}	
-	}
+	
+	orderNumber=(Integer)request.getAttribute("orderNumber");
+	userId = (String)request.getAttribute("userId");
+	
 	OrderDAO dao = new OrderDAO();
 	OrderVO ov = dao.getOrder(orderNumber);
-	System.out.println(ov.getOrderNumber());
+	System.out.println(orderNumber);
+	//System.out.println(ov.getOrderNumber());
 	ProductDAO pdao= new ProductDAO();
 	List<OrderDetailVO> lvo =new ArrayList<OrderDetailVO>();
 	
@@ -127,9 +118,9 @@
                 </tr>
               </thead>
               <tbody>
-              <% System.out.println("111"+lvo.size());
+              <% //System.out.println("111"+lvo.size());
               System.out.println("pname"+pname);
-              if(lvo.size()!=0)	{
+              if(lvo !=null )	{
               	for(OrderDetailVO vo : lvo){
             	  ProductVO pvo=pdao.getProductWithId(vo.getProductId());
               %>
