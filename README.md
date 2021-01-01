@@ -29,7 +29,7 @@
 <table>
   <tr align="center">
     <td><strong>웹 구현</strong></td>
-    <td><strong>백엔드</strong></td>
+    <td><strong>개발 언어</strong></td>
     <td><strong>IDE</strong></td>
   </tr>
   <tr align="center">
