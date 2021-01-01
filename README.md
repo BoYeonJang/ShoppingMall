@@ -1,10 +1,5 @@
 # ShoppingMall
 
-<p>
-  <a href="https://github.com/BoYeonJang/HotelVue" target="_blank">Front-end</a>
-  <br>
-  <a href="https://github.com/BoYeonJang/Hotel" target="_blank">Back-end</a>
-</p>
 <h1>프로젝트 팀명</h1>
 <p>노팅힐 Notting Hill</p>
 <h1>프로젝트 소개</h1>
